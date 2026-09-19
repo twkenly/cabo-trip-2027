@@ -158,6 +158,7 @@
     max-width: var(--content-max);
     margin: 0 auto;
     padding: var(--s7) var(--s4) var(--s1);
+    scroll-margin-top: 78px;
   }
   .section-eyebrow{
     font-family: var(--font-mono);
@@ -284,45 +285,50 @@
   /* ---------- Dining directory ---------- */
   .venue-grid{
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--s4);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s2);
     margin-top: var(--s5);
   }
   @media (min-width: 560px){
-    .venue-grid{ grid-template-columns: 1fr 1fr; }
+    .venue-grid{ grid-template-columns: repeat(3, 1fr); }
   }
   .venue-card{
     background: var(--white);
     border: 1px solid var(--hairline);
-    border-radius: var(--r-card);
+    border-radius: var(--r-inner);
     overflow: hidden;
     box-shadow: var(--shadow);
   }
   .venue-card img{
     width: 100%;
-    height: 140px;
+    height: 100px;
     object-fit: cover;
     display: block;
     cursor: zoom-in;
   }
-  .venue-card-body{ padding: var(--s3) var(--s4) var(--s4); }
-  .venue-tags{ display: flex; gap: var(--s1); margin-bottom: var(--s2); flex-wrap: wrap; }
-  .venue-tag{
+  .venue-card-body{ padding: var(--s2) var(--s3) var(--s3); }
+  .venue-meta{
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--pacific);
-    background: var(--dune);
-    padding: 2px 8px;
-    border-radius: var(--r-pill);
+    letter-spacing: 0.12em;
+    color: var(--shallows);
+    margin-bottom: 3px;
   }
   .venue-name{
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 1.15;
     margin-bottom: var(--s1);
   }
-  .venue-text{ font-size: 14.5px; color: var(--muted); }
+  .venue-text{
+    font-size: 12px;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
   /* ---------- Orientation / map ---------- */
   .map-wrap{
@@ -361,8 +367,8 @@
   }
   .legend b{ color: var(--ink); font-weight: 500; }
 
-  /* ---------- Day nav ---------- */
-  .day-nav{
+  /* ---------- Site nav ---------- */
+  .site-nav{
     position: sticky;
     top: 0;
     z-index: 50;
@@ -376,8 +382,8 @@
     margin-top: var(--s7);
     padding: var(--s3) var(--s4);
   }
-  .day-nav::-webkit-scrollbar{ display:none; }
-  .day-tab{
+  .site-nav::-webkit-scrollbar{ display:none; }
+  .nav-tab{
     flex: 0 0 auto;
     min-width: 62px;
     text-align: center;
@@ -393,35 +399,28 @@
     white-space: nowrap;
     transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
   }
-  .day-tab .sub{
+  .nav-tab .sub{
     display:block;
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--muted);
     margin-top: 2px;
   }
-  .day-tab.active{
+  .nav-tab.active{
     background: var(--pacific);
     border-color: var(--pacific);
     color: var(--ivory);
   }
-  .day-tab.active .sub{ color: var(--gold); }
-
-  .swipe-hint{
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--faint);
-    padding: var(--s2) 0 0;
-    max-width: 720px;
-    margin: 0 auto;
-  }
+  .nav-tab.active .sub{ color: var(--gold); }
 
   /* ---------- Day panel ---------- */
   .day-panels{ position: relative; }
-  .day-panel{ display: none; padding: var(--s5) var(--s4) var(--s2); max-width: 720px; margin: 0 auto; }
-  .day-panel.active{ display: block; animation: fadeIn var(--t-enter) var(--ease); }
-  @keyframes fadeIn{ from{ opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
+  .day-panel{
+    padding: var(--s5) var(--s4) var(--s2);
+    max-width: 720px;
+    margin: 0 auto;
+    scroll-margin-top: 78px;
+  }
 
   .day-title{
     font-size: var(--h2);
@@ -747,6 +746,8 @@
   </div>
 </div>
 
+<nav class="site-nav" id="site-nav"></nav>
+
 <section class="section" id="weather-section">
   <div class="section-eyebrow">What to Expect</div>
   <h2 class="section-title">Weather in Mid-January</h2>
@@ -783,9 +784,6 @@
   </div>
   <ul class="legend" id="legend-list"></ul>
 </section>
-
-<nav class="day-nav" id="day-nav"></nav>
-<p class="swipe-hint">swipe left or right to change days</p>
 
 <main class="day-panels" id="day-panels"></main>
 
@@ -1164,7 +1162,7 @@ const TRIP_DATA = {
           time: "8:00–10:45 AM",
           title: "Whale Watching Tour",
           desc: "A biologist-led Zodiac tour with Cabo Expeditions or Whale Watch Cabo. January is peak season for humpback and gray whales migrating through these waters, and the small inflatable boats get closer to the action than the big tour boats.",
-          image: "https://picsum.photos/seed/whale-watching-cabo/700/420",
+          image: "https://elegantmexico-staging.s3.us-east-2.amazonaws.com/2021/10/caboexpeditions-zodiac-01-1.jpg",
           fallback: "whale-watching-cabo"
         },
         {
@@ -1429,9 +1427,8 @@ function renderVenues(){
   grid.innerHTML = TRIP_DATA.venues.map(v => {
     const imgHtml = mediaImg(v.image, v.name, v.fallback, "",
       'onclick="openLightbox(\'' + v.image + '\',\'' + v.name.replace(/'/g, "&#39;") + '\')"');
-    const tags = v.tags.map(t => '<span class="venue-tag">' + t + '</span>').join("");
     return '<div class="venue-card">' + imgHtml +
-      '<div class="venue-card-body"><div class="venue-tags">' + tags + '</div>' +
+      '<div class="venue-card-body"><div class="venue-meta">' + v.tags.join(" · ") + '</div>' +
       '<div class="venue-name">' + v.name + '</div>' +
       '<div class="venue-text">' + v.text + '</div></div></div>';
   }).join("");
@@ -1444,32 +1441,53 @@ function renderOrientation(){
   ).join("");
 }
 
-function renderDayNav(){
-  const nav = document.getElementById("day-nav");
+// One sticky nav for the whole page: the Towers/Dining/Map sections plus
+// every day. Clicking a tab smooth-scrolls to that section; scroll-spy
+// (below) keeps the matching tab highlighted as you scroll past it.
+const NAV_ITEMS = [
+  { id: "stay-section", label: "Towers", sub: "Stay" },
+  { id: "dining-section", label: "Dining", sub: "Eat" },
+  { id: "orientation-section", label: "Map", sub: "Explore" }
+].concat(TRIP_DATA.days.map(day => ({ id: "panel-" + day.id, label: day.tabLabel, sub: day.tabDate })));
+
+function renderSiteNav(){
+  const nav = document.getElementById("site-nav");
   nav.innerHTML = "";
-  TRIP_DATA.days.forEach((day, idx) => {
+  NAV_ITEMS.forEach(item => {
     const btn = document.createElement("button");
-    btn.className = "day-tab" + (idx === 0 ? " active" : "");
-    btn.dataset.dayId = day.id;
-    btn.innerHTML = day.tabLabel + '<span class="sub">' + day.tabDate + "</span>";
-    btn.addEventListener("click", () => activateDay(day.id));
+    btn.className = "nav-tab";
+    btn.dataset.targetId = item.id;
+    btn.innerHTML = item.label + '<span class="sub">' + item.sub + "</span>";
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(item.id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
     nav.appendChild(btn);
   });
 }
 
-function activateDay(dayId){
-  document.querySelectorAll(".day-tab").forEach(el => {
-    el.classList.toggle("active", el.dataset.dayId === dayId);
-  });
-  document.querySelectorAll(".day-panel").forEach(el => {
-    el.classList.toggle("active", el.id === "panel-" + dayId);
-  });
-}
+// Highlights whichever section/day is currently in view as the page scrolls.
+// Day panels get recreated on every re-render (a new pick, etc.), so this is
+// re-run each time rather than once — a stale observer would only ever
+// watch the old, now-detached nodes.
+let scrollSpyObserver = null;
+function setupScrollSpy(){
+  if (scrollSpyObserver) scrollSpyObserver.disconnect();
 
-function activeDayIndex(){
-  const activeTab = document.querySelector(".day-tab.active");
-  if (!activeTab) return 0;
-  return TRIP_DATA.days.findIndex(d => d.id === activeTab.dataset.dayId);
+  const targets = NAV_ITEMS
+    .map(item => document.getElementById(item.id))
+    .filter(Boolean);
+
+  scrollSpyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      document.querySelectorAll(".nav-tab").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.targetId === entry.target.id);
+      });
+    });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+  targets.forEach(t => scrollSpyObserver.observe(t));
 }
 
 function stopElement(stop){
@@ -1481,7 +1499,7 @@ function stopElement(stop){
   } else {
     let mediaHtml = "";
     if (stop.video){
-      mediaHtml = '<video class="stop-media" src="' + stop.video + '" controls muted playsinline preload="metadata"></video>';
+      mediaHtml = '<video class="stop-media" src="' + stop.video + '" autoplay loop muted playsinline preload="auto" controls></video>';
     } else if (stop.image){
       mediaHtml = mediaImg(stop.image, stop.title, stop.fallback, "stop-media",
         'onclick="openLightbox(\'' + stop.image + '\',\'' + stop.title.replace(/'/g, "&#39;") + '\')"');
@@ -1578,17 +1596,15 @@ function renderDay(day){
 
 function renderAllDays(){
   const container = document.getElementById("day-panels");
-  const previouslyActive = document.querySelector(".day-tab.active");
-  const activeId = previouslyActive ? previouslyActive.dataset.dayId : TRIP_DATA.days[0].id;
-
   container.innerHTML = "";
   TRIP_DATA.days.forEach(day => {
-    const panel = renderDay(day);
-    if (day.id === activeId) panel.classList.add("active");
-    container.appendChild(panel);
+    container.appendChild(renderDay(day));
   });
   attachOptionListeners();
   attachZoomListeners();
+  // Day panels were just recreated, so the scroll-spy observer (which
+  // holds references to the old, now-detached nodes) needs to re-attach.
+  setupScrollSpy();
 }
 
 function attachOptionListeners(){
@@ -1613,31 +1629,6 @@ function attachZoomListeners(){
   });
 }
 
-// Swipe between days on touch devices
-function setupSwipe(){
-  const container = document.getElementById("day-panels");
-  let startX = null, startY = null;
-
-  container.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, { passive: true });
-
-  container.addEventListener("touchend", (e) => {
-    if (startX === null) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = e.changedTouches[0].clientY - startY;
-    startX = null;
-    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy)) return; // not a horizontal swipe
-    const idx = activeDayIndex();
-    if (dx < 0 && idx < TRIP_DATA.days.length - 1){
-      activateDay(TRIP_DATA.days[idx + 1].id);
-    } else if (dx > 0 && idx > 0){
-      activateDay(TRIP_DATA.days[idx - 1].id);
-    }
-  }, { passive: true });
-}
-
 function init(){
   applyDefaults();
   renderCountdown();
@@ -1645,9 +1636,8 @@ function init(){
   renderStay();
   renderVenues();
   renderOrientation();
-  renderDayNav();
+  renderSiteNav();
   renderAllDays();
-  setupSwipe();
 }
 
 document.addEventListener("DOMContentLoaded", init);
