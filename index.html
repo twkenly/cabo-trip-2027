@@ -731,7 +731,7 @@
 <body>
 
 <div class="hero-video-wrap">
-  <video autoplay muted loop playsinline preload="auto" poster="https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-golf-groups-6255a94ad00d8.jpeg">
+  <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-golf-groups-6255a94ad00d8.jpeg">
     <source src="assets/video/hero-pacifica.mp4" type="video/mp4">
   </video>
 </div>
@@ -1385,8 +1385,18 @@ const PLACEHOLDER_IMG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent
   '<path d="M303 175 L317 152 L383 152 L397 175"/>' +
   '</g></svg>'
 );
-function mediaImg(src, alt, fallbackSeed, className, extra){
-  return '<img class="' + (className || "") + '" src="' + src + '" alt="' + alt + '" loading="lazy" ' +
+// `eager`: option-card thumbnails live inside horizontally-scrolling
+// carousels. Native loading="lazy" for images that start off-screen in a
+// *horizontal* scroller is much less battle-tested than vertical-scroll
+// lazy loading, and iOS Safari in particular can fail to recompute the
+// object-fit: cover crop once such an image finally decodes — the image
+// renders at its natural size, top-anchored, leaving whitespace below the
+// fixed-height box instead of filling it. Cards visible on initial load
+// never hit this path (no lazy delay), which is why only the cards you
+// had to scroll to reach were affected. Loading these eagerly sidesteps
+// the bug entirely.
+function mediaImg(src, alt, fallbackSeed, className, extra, eager){
+  return '<img class="' + (className || "") + '" src="' + src + '" alt="' + alt + '" loading="' + (eager ? "eager" : "lazy") + '" ' +
     (extra || "") +
     ' onerror="this.onerror=null;this.src=\'' + PLACEHOLDER_IMG + '\';">';
 }
@@ -1518,7 +1528,7 @@ function stopElement(stop){
   } else {
     let mediaHtml = "";
     if (stop.video){
-      mediaHtml = '<video class="stop-media" src="' + stop.video + '" autoplay loop muted playsinline preload="auto" controls></video>';
+      mediaHtml = '<video class="stop-media autoplay-video" src="' + stop.video + '" autoplay loop muted playsinline webkit-playsinline preload="auto" controls></video>';
     } else if (stop.image){
       mediaHtml = mediaImg(stop.image, stop.title, stop.fallback, "stop-media",
         'onclick="openLightbox(\'' + stop.image + '\',\'' + stop.title.replace(/'/g, "&#39;") + '\')"');
@@ -1560,7 +1570,7 @@ function renderDecisionStop(stop){
       html += '<div class="option-badge recommended">Recommended</div>';
     }
     html += '<div class="option-zoom" data-zoom-src="' + opt.image + '" data-zoom-caption="' + opt.name.replace(/'/g, "&#39;") + '">&#128269;</div>';
-    html += mediaImg(opt.image, opt.name, opt.fallback);
+    html += mediaImg(opt.image, opt.name, opt.fallback, "", "", true);
     html += '</div>';
     html += '<div class="option-body">';
     html += '<div class="option-name">' + opt.name + '</div>';
@@ -1622,8 +1632,10 @@ function renderAllDays(){
   attachOptionListeners();
   attachZoomListeners();
   // Day panels were just recreated, so the scroll-spy observer (which
-  // holds references to the old, now-detached nodes) needs to re-attach.
+  // holds references to the old, now-detached nodes) needs to re-attach,
+  // and the freshly-recreated Quivira video needs its autoplay reinforced.
   setupScrollSpy();
+  ensureVideosAutoplay();
 }
 
 function attachOptionListeners(){
@@ -1645,6 +1657,24 @@ function attachZoomListeners(){
       e.stopPropagation();
       openLightbox(z.dataset.zoomSrc, z.dataset.zoomCaption);
     });
+  });
+}
+
+// iOS Safari's autoplay attribute support is inconsistent, especially
+// right after a video element is inserted/re-inserted into the page (as
+// happens whenever a pick re-renders the day panels). Explicitly calling
+// .play() — after forcing .muted = true, which iOS requires even when the
+// HTML attribute is already present — is the standard reinforcement.
+// .catch() swallows the rejection when autoplay is genuinely blocked by
+// device settings (Low Power Mode, Safari's Auto-Play preference); the
+// video still has `controls`, so it's tappable either way.
+function ensureVideosAutoplay(){
+  document.querySelectorAll("video[autoplay]").forEach(video => {
+    video.muted = true;
+    const tryPlay = () => video.play().catch(() => {});
+    tryPlay();
+    video.addEventListener("loadedmetadata", tryPlay, { once: true });
+    video.addEventListener("canplay", tryPlay, { once: true });
   });
 }
 
