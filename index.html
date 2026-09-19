@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Katie &amp; Our Cabo Getaway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Color */
+    --ivory:#FBF7F0;   --dune:#EFE4D2;   --hairline:#E6DACA;
+    --pacific:#0E3A45; --shallows:#2C7C89;
+    --clay:#C2603C;    --clay-deep:#A94E2E;  --clay-tint:#FDF3EC;
+    --gold:#D9A76E;    --agave:#7C8C4E;
+    --ink:#1C2B2F;     --muted:#4A5A5E;   --faint:#7A8A8E;
+    --white:#FFFFFF;
+
+    /* Type */
+    --font-display:'Bodoni Moda',Georgia,serif;
+    --font-ui:'Jost',-apple-system,system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --h1:clamp(34px,7vw,64px);  --h2:clamp(24px,3.4vw,34px);
+    --h3:17px;  --body:16.5px;  --meta:12.5px;
+
+    /* Space — 4pt scale */
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px;
+    --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+
+    /* Shape */
+    --r-pill:999px; --r-card:14px; --r-inner:12px; --r-arch:22px;
+    --shadow:0 1px 2px rgba(28,43,47,.04);
+    --content-max:760px;
+
+    /* Motion */
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --t-fast:180ms; --t-enter:420ms;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-weight: 300;
+    font-size: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 48px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display{
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  p{ text-wrap: pretty; }
+  a{ color: inherit; }
+  button{ font-family: inherit; }
+  img{ background: var(--dune); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+
+  /* ---------- Hero video ---------- */
+  .hero-video-wrap{
+    width: 100%;
+    height: 46vh;
+    min-height: 260px;
+    max-height: 480px;
+    overflow: hidden;
+    background: var(--pacific);
+    border-radius: 0 0 var(--r-arch) var(--r-arch);
+  }
+  .hero-video-wrap video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .intro{
+    text-align: center;
+    padding: var(--s6) 20px var(--s2);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .intro .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--clay);
+    margin-bottom: var(--s2);
+  }
+  .intro h1{
+    font-size: var(--h1);
+    color: var(--pacific);
+  }
+  .intro .dates{
+    margin-top: var(--s2);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+  }
+  .countdown-pill{
+    margin-top: var(--s5);
+  }
+  .countdown-pill .num{
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(30px, 6vw, 44px);
+    color: var(--clay);
+    line-height: 1;
+  }
+  .countdown-pill .cap{
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: var(--s1);
+  }
+  .countdown-pill .plain{
+    font-family: var(--font-display);
+    font-size: clamp(20px, 4vw, 28px);
+    color: var(--pacific);
+  }
+
+  .callout{
+    max-width: 640px;
+    margin: var(--s6) auto 0;
+    background: var(--pacific);
+    color: var(--ivory);
+    border-radius: var(--r-card);
+    padding: var(--s5);
+    font-family: var(--font-ui);
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+  .callout b{ color: var(--clay); font-weight: 500; }
+
+  /* ---------- Section shells ---------- */
+  .section{
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--s7) var(--s4) var(--s1);
+  }
+  .section-eyebrow{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--clay);
+    margin-bottom: var(--s2);
+  }
+  .section-title{
+    font-size: var(--h2);
+    color: var(--pacific);
+  }
+  .rule-gold{
+    width: 52px;
+    height: 2px;
+    background: var(--gold);
+    border: none;
+    margin: var(--s3) 0 var(--s4);
+  }
+  .section-intro{
+    color: var(--muted);
+    font-size: var(--body);
+    max-width: 62ch;
+  }
+
+  /* ---------- Weather ---------- */
+  .weather-note{
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+    margin-top: var(--s2);
+  }
+  .weather-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s3);
+    margin-top: var(--s5);
+  }
+  @media (min-width: 560px){
+    .weather-grid{ grid-template-columns: repeat(4, 1fr); }
+  }
+  .weather-tile{
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-inner);
+    padding: var(--s4) var(--s2);
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .weather-tile .icon{ font-size: 20px; margin-bottom: var(--s2); }
+  .weather-tile .value{
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--pacific);
+  }
+  .weather-tile .label{
+    font-family: var(--font-ui);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: var(--s1);
+  }
+
+  /* ---------- Gallery grid (Towers Advantage) ---------- */
+  .gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s2);
+    margin-top: var(--s5);
+  }
+  .gallery-grid figure{
+    margin: 0;
+    border-radius: var(--r-inner);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--hairline);
+    position: relative;
+  }
+  .gallery-grid figure:first-child{
+    border-radius: var(--r-arch) var(--r-arch) var(--r-inner) var(--r-inner);
+  }
+  .gallery-grid img{
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+  }
+  .gallery-grid figcaption{
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    background: linear-gradient(transparent, rgba(14,58,69,0.8));
+    color: var(--ivory);
+    font-family: var(--font-ui);
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 18px 8px 6px;
+  }
+  .stay-facts{
+    list-style: none;
+    margin: var(--s5) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--s3);
+  }
+  .stay-facts li{
+    display: flex;
+    gap: var(--s3);
+    font-size: var(--body);
+    color: var(--muted);
+    align-items: flex-start;
+  }
+  .stay-facts .dot{
+    flex: 0 0 auto;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--clay);
+    margin-top: 6px;
+  }
+  .stay-facts b{ color: var(--ink); font-weight: 500; }
+
+  /* ---------- Dining directory ---------- */
+  .venue-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s4);
+    margin-top: var(--s5);
+  }
+  @media (min-width: 560px){
+    .venue-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  .venue-card{
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-card);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .venue-card img{
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+  }
+  .venue-card-body{ padding: var(--s3) var(--s4) var(--s4); }
+  .venue-tags{ display: flex; gap: var(--s1); margin-bottom: var(--s2); flex-wrap: wrap; }
+  .venue-tag{
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--pacific);
+    background: var(--dune);
+    padding: 2px 8px;
+    border-radius: var(--r-pill);
+  }
+  .venue-name{
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin-bottom: var(--s1);
+  }
+  .venue-text{ font-size: 14.5px; color: var(--muted); }
+
+  /* ---------- Orientation / map ---------- */
+  .map-wrap{
+    margin-top: var(--s5);
+    border-radius: var(--r-arch) var(--r-arch) var(--r-inner) var(--r-inner);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--hairline);
+    background: var(--white);
+  }
+  .map-wrap img{
+    width: 100%;
+    display: block;
+    cursor: zoom-in;
+  }
+  .legend{
+    list-style: none;
+    margin: var(--s5) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--s3);
+  }
+  .legend li{
+    display: flex;
+    gap: var(--s3);
+    font-size: var(--body);
+    color: var(--muted);
+    align-items: flex-start;
+  }
+  .legend .dot{
+    flex: 0 0 auto;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--clay);
+    margin-top: 6px;
+  }
+  .legend b{ color: var(--ink); font-weight: 500; }
+
+  /* ---------- Day nav ---------- */
+  .day-nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ivory);
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    gap: var(--s2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-top: var(--s7);
+    padding: var(--s3) var(--s4);
+  }
+  .day-nav::-webkit-scrollbar{ display:none; }
+  .day-tab{
+    flex: 0 0 auto;
+    min-width: 62px;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: var(--r-inner);
+    border: 1px solid var(--hairline);
+    background: var(--white);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 13.5px;
+    color: var(--ink);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  }
+  .day-tab .sub{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .day-tab.active{
+    background: var(--pacific);
+    border-color: var(--pacific);
+    color: var(--ivory);
+  }
+  .day-tab.active .sub{ color: var(--gold); }
+
+  .swipe-hint{
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+    padding: var(--s2) 0 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Day panel ---------- */
+  .day-panels{ position: relative; }
+  .day-panel{ display: none; padding: var(--s5) var(--s4) var(--s2); max-width: 720px; margin: 0 auto; }
+  .day-panel.active{ display: block; animation: fadeIn var(--t-enter) var(--ease); }
+  @keyframes fadeIn{ from{ opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
+
+  .day-title{
+    font-size: var(--h2);
+    color: var(--pacific);
+  }
+  .day-title .day-date{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--clay);
+    text-transform: uppercase;
+    margin-bottom: var(--s2);
+  }
+  .day-intro{
+    margin-top: var(--s2);
+    color: var(--muted);
+    font-size: var(--body);
+  }
+
+  .picks-bar{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+    margin-top: var(--s4);
+  }
+  .pick-chip{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--dune);
+    border-radius: var(--r-pill);
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--pacific);
+  }
+  .pick-chip.unset{
+    color: var(--faint);
+    font-style: italic;
+  }
+  .pick-chip .dot{
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--clay);
+  }
+
+  /* ---------- Timeline ---------- */
+  .timeline{
+    position: relative;
+    margin-top: var(--s5);
+    padding-left: 26px;
+  }
+  .timeline::before{
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--hairline);
+  }
+  .stop{
+    position: relative;
+    margin-bottom: var(--s6);
+  }
+  .stop::before{
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--clay);
+  }
+  .stop-time{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--clay);
+    letter-spacing: 0.02em;
+  }
+  .stop-title{
+    font-family: var(--font-display);
+    font-size: 21px;
+    margin: 4px 0 var(--s1);
+    color: var(--ink);
+  }
+  .stop-title .picked{
+    color: var(--clay);
+    font-family: var(--font-ui);
+    font-weight: 500;
+  }
+  .stop-media{
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: var(--r-inner);
+    margin: var(--s3) 0;
+    border: 1px solid var(--hairline);
+    display: block;
+    cursor: zoom-in;
+  }
+  video.stop-media{ cursor: default; }
+  .stop-desc{
+    font-size: var(--body);
+    color: var(--muted);
+  }
+  .stop-badges{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: var(--s2);
+  }
+  .stop-tag{
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--pacific);
+    background: var(--dune);
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+  }
+  .stop-tag.surcharge{ color: var(--clay-deep); background: var(--clay-tint); }
+  .stop-link{
+    display: inline-block;
+    margin-top: var(--s2);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--pacific);
+    text-decoration: none;
+    border-bottom: 1px solid var(--shallows);
+  }
+
+  /* ---------- Decision cards ---------- */
+  .decision-prompt{
+    font-size: 14px;
+    color: var(--muted);
+    margin: 2px 0 var(--s4);
+  }
+  .option-scroll{
+    display: flex;
+    gap: var(--s3);
+    overflow-x: auto;
+    padding: 4px 4px 12px;
+    margin: 0 -4px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  .option-card{
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 226px;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-card);
+    overflow: hidden;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: var(--shadow);
+    transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+    font-family: inherit;
+    color: inherit;
+    padding: 0;
+    position: relative;
+  }
+  .option-card.selected{
+    border: 1.5px solid var(--clay);
+    background: var(--clay-tint);
+  }
+  .option-card-img-wrap{ position: relative; }
+  .option-card img{
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    background: var(--dune);
+  }
+  .option-zoom{
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(14,58,69,0.7);
+    color: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    z-index: 2;
+  }
+  .option-badge{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--dune);
+    color: var(--pacific);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: var(--r-pill);
+    z-index: 2;
+  }
+  .option-body{ padding: var(--s3) var(--s3) var(--s4); }
+  .option-name{
+    font-family: var(--font-display);
+    font-size: 17px;
+    margin-bottom: var(--s1);
+  }
+  .option-blurb{
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: var(--s2);
+  }
+  .option-detail{
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: var(--s2);
+    padding-top: var(--s2);
+    border-top: 1px solid var(--hairline);
+  }
+  .option-meta{
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--shallows);
+    margin-bottom: var(--s1);
+  }
+  .option-select-hint{
+    margin-top: var(--s2);
+  }
+  .option-select-hint::before{
+    content: 'Tap to choose';
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    background: var(--dune);
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+  }
+  .option-card.selected .option-select-hint::before{
+    content: 'Our pick';
+    color: #fff;
+    background: var(--clay);
+  }
+  .option-link{
+    display: inline-block;
+    margin-top: 2px;
+    font-family: var(--font-ui);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--pacific);
+  }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(14,58,69,0.94);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: var(--s5);
+    flex-direction: column;
+  }
+  .lightbox.open{ display: flex; }
+  .lightbox img{
+    max-width: 100%;
+    max-height: 78vh;
+    border-radius: var(--r-inner);
+  }
+  .lightbox-caption{
+    color: var(--ivory);
+    font-size: 13.5px;
+    margin-top: var(--s4);
+    text-align: center;
+    max-width: 60ch;
+  }
+  .lightbox-close{
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--ivory);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero-video-wrap">
+  <video autoplay muted loop playsinline preload="auto" poster="https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-golf-groups-6255a94ad00d8.jpeg">
+    <source src="assets/video/hero-pacifica.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="intro">
+  <div class="eyebrow">MLK Weekend Getaway</div>
+  <h1>Cabo San Lucas</h1>
+  <div class="dates">January 14&ndash;18, 2027</div>
+  <div class="countdown-pill" id="countdown-pill"></div>
+  <div class="callout">
+    The hard part's done — flights booked, hotel booked, activities lined up. Now it's <b>your</b> turn: tap into each day below and pick the restaurants and activities that sound good to you. Everything you choose is saved right here on your phone.
+  </div>
+</div>
+
+<section class="section" id="weather-section">
+  <div class="section-eyebrow">What to Expect</div>
+  <h2 class="section-title">Weather in Mid-January</h2>
+  <hr class="rule-gold">
+  <p class="section-intro">Los Cabos is in its dry season this time of year — warm, sunny days and cool nights, with almost no rain.</p>
+  <p class="weather-note">Typical/historical averages for mid-January, not a live forecast.</p>
+  <div class="weather-grid" id="weather-grid"></div>
+</section>
+
+<section class="section" id="stay-section">
+  <div class="section-eyebrow">Where We're Staying</div>
+  <h2 class="section-title">The Towers at Pacifica</h2>
+  <hr class="rule-gold">
+  <p class="section-intro" id="stay-intro"></p>
+  <ul class="stay-facts" id="stay-facts"></ul>
+  <div class="gallery-grid" id="stay-gallery"></div>
+</section>
+
+<section class="section" id="dining-section">
+  <div class="section-eyebrow">At a Glance</div>
+  <h2 class="section-title">Restaurants &amp; Bars</h2>
+  <hr class="rule-gold">
+  <p class="section-intro">Everywhere we might eat or drink this trip, in one place — most are inside Pacifica or a quick trip to Quivira next door.</p>
+  <div class="venue-grid" id="venue-grid"></div>
+</section>
+
+<section class="section" id="orientation-section">
+  <div class="section-eyebrow">Getting Our Bearings</div>
+  <h2 class="section-title">The Lay of the Land</h2>
+  <hr class="rule-gold">
+  <p class="section-intro">Everything for this trip sits along a short stretch of Pacific coastline just west of downtown Cabo San Lucas.</p>
+  <div class="map-wrap">
+    <img src="assets/img/cabo-area-map.webp" alt="Map of the Cabo San Lucas corridor showing Pueblo Bonito Pacifica, Quivira Golf Club, the Marina, and El Arco" loading="lazy" onclick="openLightbox('assets/img/cabo-area-map.webp','The Cabo corridor: Quivira Golf Club and Pueblo Bonito Pacifica sit side by side on the Pacific, a short drive from the Marina, El Arco, and downtown.')">
+  </div>
+  <ul class="legend" id="legend-list"></ul>
+</section>
+
+<nav class="day-nav" id="day-nav"></nav>
+<p class="swipe-hint">swipe left or right to change days</p>
+
+<main class="day-panels" id="day-panels"></main>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+/* ======================================================================
+   TRIP_DATA
+   ----------------------------------------------------------------------
+   Everything about the itinerary lives here. To customize later:
+     - Swap any `image`/`video` URL for your own, or drop a file into
+       /assets/img or /assets/video and point to it, e.g. "assets/img/x.jpg".
+     - Images mix local /assets files with real photos hot-linked from
+       Pueblo Bonito's own media CDN and a few other public sources.
+       Every image has a graceful fallback: if a URL ever goes stale, it's
+       swapped automatically for a stand-in stock photo so nothing breaks.
+     - For a "decision point" stop, edit/add/remove entries in `options`.
+       Each option needs: id (unique within that decision), name, blurb,
+       image, and optional meta/detail/link.
+     - `decision.default` (optional) pre-selects an option id the first
+       time the page loads on a device, but the picker can still change it.
+   ====================================================================== */
+
+// Real photos, pulled from Pueblo Bonito's own media CDN and a few other
+// public sources. If any of these links ever break, the onerror fallback
+// in mediaImg() below swaps in a stock photo automatically.
+const PB = {
+  towersRoom: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-pacifica-thetowers-accommodations-60d48bd5a503f.jpg",
+  resortWide: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblo-bonito-pacifica-resized-69f369fc977c5.jpg",
+  gallery12: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-pacifica-gallery-12-60ccf026513c3.jpg",
+  peninsula: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/fa/ca/0d/peninsula-restaurant.jpg?w=1400&h=-1&s=1",
+  siempre: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-pacifica-siempre-image-69445a1807de0.jpg",
+  aireAquabar: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-pacifica-airerestaurantandaquabaraire-image-69445a321a859.jpg",
+  pescados: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-dining-pescados-60d3a49939ae9-686d417653f69.jpg",
+  quiviraSteakhouse: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-pacifica-quivirasteakhouse-image-69445a4c7a1ea.jpg",
+  spa: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-spa-pacifica-60d3a2e6ea67f.jpg",
+  golfGroups: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-golf-groups-6255a94ad00d8.jpeg",
+  quiviraClubhouse: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-beyondhospitality-quiviraclubhouse-image-69445158cf1c0.jpg",
+  quiviraMarket: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-sunsetbeach-themarketatquivira-image-69445ad94a267.jpg",
+  refresca: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-beyondhospitality-refrescatequilabar-image-69445261a082b.jpg",
+  theAfter: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-beyondhospitality-theafter-image-694454db1f063.jpg",
+  peninsulaBar: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-beyondhospitality-peninsulabar-image-694451fa985a2.jpg",
+  partidos: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-beyondhospitality-partidos-image-6944527c5b0ab.jpg",
+  laFrida: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-sunsetbeach-lafridarestaurant-image-69445ac18f0d8.jpg",
+  chefOnFire: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/untitled-design-52-698cf83398557.png",
+  checkIn: "https://images.trvl-media.com/lodging/2000000/1180000/1172900/1172873/57e539b0.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill",
+  quiviraClubhouseLunch: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/23/d9/db/caption.jpg?w=1400&h=-1&s=1",
+  marina: "https://thecabosun.com/wp-content/uploads/2025/10/Marina-cabo-san-lucas-1.jpg",
+  medano: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/30/1d/4a/colorful-umbrellas-at.jpg?w=1200&h=-1&s=1",
+  diamante: "https://diamantecabosanlucas.com/wp-content/uploads/2022/10/Golf_Dunes_1-1.jpg",
+  caboDelSol: "https://golf-pass.brightspotcdn.com/b1/86/adf571e8b10aea731421319ccd41/93850.jpg",
+  cookingClass: "https://www.kuaprivatechefloscabos.com/wp-content/uploads/2023/12/Chen-cooking-class1.jpg",
+  poolBeach: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/1b/9c/e3/caption.jpg?w=1400&h=-1&s=1",
+  sunsetMonalisa: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/5f/4a/e8/sm05.jpg?w=1400&h=-1&s=1",
+  towersVipLounge: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/8b/42/32/the-towers-at-pueblo.jpg?w=1000&h=-1&s=1",
+  poolView: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/59/75/19/caption.jpg?w=1400&h=-1&s=1",
+  whaleLounge: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/2a/d2/caption.jpg?w=1100&h=-1&s=1",
+  beachView: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/1b/9c/e3/caption.jpg?w=1400&h=-1&s=1",
+  beachSunset: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/18/b8/48/caption.jpg?w=1400&h=-1&s=1",
+  // Photos we saved locally
+  towersLounge: "assets/img/towers-lounge.webp",
+  butlerService: "assets/img/butler-service.webp",
+  areaMap: "assets/img/cabo-area-map.webp",
+  quiviraVideo: "assets/video/quivira-golf.mp4"
+};
+
+// The three bars we keep coming back to at Pacifica/Quivira — reused for
+// both the Thursday happy-hour pick and the Thursday/Friday nightcap pick.
+const PACIFICA_BARS = [
+  {
+    id: "peninsula-bar",
+    name: "Peninsula Bar",
+    blurb: "Pacifica's signature sunset spot, right at the point.",
+    detail: "Open-air seating over the water with an unobstructed ocean view — the natural pick for a sunset cocktail, with live music some evenings.",
+    image: PB.peninsulaBar,
+    fallback: "oceanfront-point-bar"
+  },
+  {
+    id: "refresca",
+    name: "Refresca Tequila Bar",
+    blurb: "A dedicated tequila & mezcal bar at Quivira.",
+    detail: "An extensive agave-spirits list and tasting flights — the same spot as Saturday's tasting, if we want to go back for more.",
+    image: PB.refresca,
+    fallback: "tequila-mezcal-bar"
+  },
+  {
+    id: "partidos",
+    name: "Partidos",
+    blurb: "A lively sports-and-games bar in the resort complex.",
+    detail: "Screens for the game and bar bites — a more casual scene than Peninsula Bar.",
+    image: PB.partidos,
+    fallback: "resort-sports-bar"
+  }
+];
+
+const TRIP_DATA = {
+  hotel: {
+    name: "Pueblo Bonito Pacifica Golf & Spa Resort",
+    room: "Towers Deluxe Ocean View Room · 1 King Bed · Butler Service",
+    checkIn: "Check-in Thu 1/14",
+    checkOut: "Check-out Mon 1/18"
+  },
+
+  weather: [
+    { icon: "☀️", value: "77°F", label: "Avg. High" },
+    { icon: "🌙", value: "58°F", label: "Avg. Low" },
+    { icon: "🌧️", value: "~1 day", label: "Rain (all month)" },
+    { icon: "🌊", value: "~70°F", label: "Ocean Temp" }
+  ],
+
+  stayIntro: "Pacifica sits on its own bluff at the tip of the Pacific coastline, adults-only and quieter than the marina hotels. The Towers is its own wing of the resort — a step above the standard rooms.",
+  stayFacts: [
+    { label: "Room", text: "Towers Deluxe Ocean View Room, 1 King bed, with butler service." },
+    { label: "Butler Service", text: "One call away for unpacking, reservations, and poolside drinks the whole trip." },
+    { label: "Towers Lounge", text: "A private lounge and sundeck for Towers guests only, away from the main pool." },
+    { label: "Dates", text: "Check-in Thursday 1/14, check-out Monday 1/18." }
+  ],
+  stayGallery: [
+    { image: PB.towersLounge, fallback: "hotel-vip-lounge", caption: "Exclusive Towers lounge" },
+    { image: PB.butlerService, fallback: "resort-butler-service", caption: "24-hour butler service" },
+    { image: PB.towersVipLounge, fallback: "towers-lounge-view", caption: "The Towers lounge & sundeck" },
+    { image: PB.poolView, fallback: "resort-pool-view", caption: "Pool at Pacifica" },
+    { image: PB.beachView, fallback: "resort-beach-view", caption: "The beach at Pacifica" },
+    { image: PB.beachSunset, fallback: "resort-beach-sunset", caption: "Sunset on the beach" }
+  ],
+
+  // Every restaurant/bar we might visit, for the "at a glance" directory.
+  venues: [
+    { name: "Peninsula", tags: ["Restaurant", "Pacifica"], image: PB.peninsula, fallback: "fine-dining-sushi", text: "Upscale sushi fine dining right on the Pacifica point — an elevated, ocean-view night out." },
+    { name: "Siempre", tags: ["Restaurant", "Pacifica"], image: PB.siempre, fallback: "mediterranean-ocean-view-restaurant", text: "Mediterranean cooking in a circular, glass-walled dining room over the ocean. Also hosts the Sunday brunch." },
+    { name: "Pescados", tags: ["Restaurant", "Pacifica"], image: PB.pescados, fallback: "resort-sushi-restaurant", text: "Pacifica's casual sushi and seafood spot — simple, fresh, and easy." },
+    { name: "Aire / Aquabar", tags: ["Bar", "Pacifica"], image: PB.aireAquabar, fallback: "swim-up-pool-bar", text: "Swim-up pool bar — order a drink without ever getting out of the water." },
+    { name: "Peninsula Bar", tags: ["Bar", "Pacifica"], image: PB.peninsulaBar, fallback: "oceanfront-point-bar", text: "Pacifica's signature sunset bar at the point, with live music some evenings." },
+    { name: "Partidos", tags: ["Bar"], image: PB.partidos, fallback: "resort-sports-bar", text: "A lively sports-and-games bar — screens, bar bites, casual energy." },
+    { name: "Quivira Steakhouse", tags: ["Restaurant", "Quivira"], image: PB.quiviraSteakhouse, fallback: "golf-course-steakhouse", text: "A proper steakhouse overlooking the golf course and ocean. One surcharge meal worth dressing up for." },
+    { name: "Quivira Clubhouse & Market", tags: ["Restaurant", "Quivira"], image: PB.quiviraClubhouse, fallback: "golf-clubhouse", text: "Coffee, breakfast, and lunch spot for golf days, with sweeping coastline views." },
+    { name: "Refresca Tequila Bar", tags: ["Bar", "Quivira"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with tasting flights for going beyond the margarita." },
+    { name: "The After", tags: ["Bar", "Quivira"], image: PB.theAfter, fallback: "sports-bar-tvs", text: "Quivira's sports bar — ten TVs, satellite sports, open late on Saturdays." },
+    { name: "La Frida", tags: ["Restaurant", "Sunset Beach"], image: PB.laFrida, fallback: "sister-resort-restaurant", text: "The signature restaurant at Sunset Beach, Pacifica's sister property a short shuttle up the coast." }
+  ],
+
+  orientation: [
+    { name: "Pueblo Bonito Pacifica", note: "Home base — an adults-only bluff-top resort on the Pacific side of the peninsula." },
+    { name: "Quivira Golf Club", note: "Right next door to Pacifica — the Jack Nicklaus course we're playing Friday morning." },
+    { name: "Pueblo Bonito Sunset Beach", note: "Pacifica's sister resort a few minutes up the coast, reachable by a quick shuttle — home to La Frida." },
+    { name: "Cabo San Lucas Marina & Downtown", note: "Boats, shops, and restaurants on the Sea of Cortez side — where our whale-watching tour departs from." },
+    { name: "El Arco (The Arch)", note: "Cabo's iconic rock arch, right where the Pacific meets the Sea of Cortez — we'll pass it by boat Saturday." },
+    { name: "Medano Beach", note: "The main swimmable beach in town, lined with beach clubs — lunch at Mango Deck Saturday afternoon." },
+    { name: "San José del Cabo Airport (SJD)", note: "Where we fly in and out — roughly a 45-minute drive from Pacifica." }
+  ],
+
+  days: [
+    {
+      id: "thu",
+      tabLabel: "Thu",
+      tabDate: "1/14",
+      title: "Arrival",
+      dateLabel: "Thursday, January 14",
+      intro: "Wheels up at 6 AM, wheels down in Cabo by 2 — then our first taste of Pacifica.",
+      stops: [
+        {
+          time: "6:00 AM",
+          title: "Flight: LGA → ATL",
+          desc: "DL550, the first leg of the day."
+        },
+        {
+          time: "11:20 AM",
+          title: "Flight: ATL → SJD",
+          desc: "DL1945, touching down in Los Cabos around 2:00 PM."
+        },
+        {
+          time: "2:00 PM",
+          title: "Land at SJD",
+          desc: "Immigration, bags, and the resort transfer — figure on about 90 minutes door to door before we're checking in."
+        },
+        {
+          time: "~3:30 PM",
+          title: "Check-in at Pacifica",
+          desc: "Our butler meets us at the door, checks us in, and helps unpack while we get our first look around.",
+          image: PB.checkIn,
+          fallback: "hotel-lobby-checkin",
+          tag: "Butler service"
+        },
+        {
+          time: "~4:15 PM",
+          title: "Walk the Property",
+          desc: "A slow lap of Pacifica — pools, beach paths, the restaurants we'll be picking between all weekend, and the cliffside walkway the resort is known for.",
+          image: PB.resortWide,
+          fallback: "cabo-resort-grounds"
+        },
+        {
+          type: "decision",
+          id: "thu-happy-hour",
+          time: "~5:30 PM",
+          title: "Happy Hour",
+          prompt: "Where should we start the evening?",
+          default: null,
+          options: PACIFICA_BARS
+        },
+        {
+          type: "decision",
+          id: "thu-dinner",
+          time: "6:00–7:30 PM",
+          title: "Dinner",
+          prompt: "First night in Cabo — where should we eat?",
+          default: "chef-on-fire",
+          options: [
+            {
+              id: "chef-on-fire",
+              name: "Chef on Fire",
+              blurb: "A live-fire chef's table on the Peninsula Garden & Beach.",
+              detail: "A three-course dinner with the chefs cooking meats and seafood right in front of you over open flame. Wine is included, capped off with a signature flamed coffee — and in winter, you might catch whales breaching offshore during dinner.",
+              meta: "900 MXN/person · all-inclusive",
+              image: PB.chefOnFire,
+              fallback: "chef-on-fire-live-cooking"
+            },
+            {
+              id: "siempre-thu",
+              name: "Siempre",
+              blurb: "Mediterranean cooking in a circular, glass-walled dining room over the ocean.",
+              detail: "Calmer and more low-key than Chef on Fire — good if we'd rather sit down after a long travel day than stand around an action station.",
+              meta: "On property",
+              image: PB.siempre,
+              fallback: "mediterranean-ocean-view-restaurant"
+            },
+            {
+              id: "pescados-thu",
+              name: "Pescados",
+              blurb: "The resort's sushi and seafood spot.",
+              detail: "Fresh, simple seafood-forward menu — a lighter option if we're not up for a big meal after flying all day.",
+              meta: "On property",
+              image: PB.pescados,
+              fallback: "resort-sushi-restaurant"
+            }
+          ]
+        },
+        {
+          type: "decision",
+          id: "thu-nightcap",
+          time: "9:00–11:00 PM",
+          title: "Nightcap",
+          prompt: "Where should we end the night?",
+          default: null,
+          options: PACIFICA_BARS
+        }
+      ]
+    },
+
+    {
+      id: "fri",
+      tabLabel: "Fri",
+      tabDate: "1/15",
+      title: "Golf at Quivira",
+      dateLabel: "Friday, January 15",
+      intro: "An early tee time at one of Cabo's most dramatic courses, then pool time and an open dinner choice.",
+      stops: [
+        {
+          time: "~7:20 AM",
+          title: "Depart for Quivira",
+          desc: "Quivira is just up the coast from Pacifica — a quick ride over to the clubhouse."
+        },
+        {
+          time: "~7:35 AM",
+          title: "Coffee at the Market",
+          desc: "A coffee and a light bite at The Market at Quivira before warm-up.",
+          image: PB.quiviraMarket,
+          fallback: "golf-market-coffee"
+        },
+        {
+          time: "7:50–8:00 AM",
+          title: "Check In & Warm Up",
+          desc: "Bag drop, scorecards, and a bucket on the driving range before we head to the first tee."
+        },
+        {
+          time: "8:00 AM",
+          title: "Tee Time — Quivira",
+          desc: "Jack Nicklaus's Signature design carved into the cliffs above the Pacific — several holes play right along the edge of the bluff, with the ocean in view almost the entire round.",
+          video: PB.quiviraVideo,
+          fallback: "quivira-golf-course-cliffside"
+        },
+        {
+          time: "~12:30 PM",
+          title: "Off the Course",
+          desc: "About a 4.5 hour round, so we should be wrapping up right around lunchtime."
+        },
+        {
+          time: "12:30–1:30 PM",
+          title: "Lunch",
+          desc: "Back at the Quivira Clubhouse to refuel before heading to the pool.",
+          image: PB.quiviraClubhouseLunch,
+          fallback: "golf-clubhouse-lunch"
+        },
+        {
+          time: "from ~2:30 PM",
+          title: "Pool Recovery",
+          desc: "Swim-up drinks at Aire/Aquabar — float in the pool and order without ever getting out.",
+          image: PB.aireAquabar,
+          fallback: "swim-up-pool-bar"
+        },
+        {
+          type: "decision",
+          id: "fri-dinner",
+          time: "Evening",
+          title: "Dinner",
+          prompt: "Wide open tonight — pick whatever sounds good.",
+          default: null,
+          options: [
+            {
+              id: "peninsula-fri",
+              name: "Peninsula",
+              blurb: "Sushi fine dining, right on the Pacifica point.",
+              detail: "The resort's upscale sushi restaurant — a step up from Pescados, with an elevated ocean-view setting for a nicer night out.",
+              meta: "On property",
+              image: PB.peninsula,
+              fallback: "fine-dining-sushi-restaurant"
+            },
+            {
+              id: "siempre-fri",
+              name: "Siempre",
+              blurb: "Mediterranean, circular ocean-view room.",
+              detail: "Same spot as Thursday's alternate — worth considering again if we loved the vibe, or skip it if we already went Thursday.",
+              meta: "On property",
+              image: PB.siempre,
+              fallback: "mediterranean-ocean-view-restaurant-2"
+            },
+            {
+              id: "pescados-fri",
+              name: "Pescados",
+              blurb: "Sushi, on property.",
+              detail: "Casual and reliable — good option if we want something easy after a full golf day.",
+              meta: "On property",
+              image: PB.pescados,
+              fallback: "resort-sushi-restaurant-2"
+            },
+            {
+              id: "la-frida-fri",
+              name: "La Frida",
+              blurb: "Sunset Beach's signature restaurant, a 5-minute shuttle away — still all-inclusive.",
+              detail: "A change of scenery without leaving the all-inclusive plan. Worth it if we want to see a different part of the coastline this trip.",
+              meta: "5 min shuttle away",
+              image: PB.laFrida,
+              fallback: "sister-resort-restaurant"
+            }
+          ]
+        },
+        {
+          type: "decision",
+          id: "fri-nightcap",
+          time: "Nightcap",
+          title: "Nightcap",
+          prompt: "Where should we end the night?",
+          default: null,
+          options: PACIFICA_BARS
+        }
+      ]
+    },
+
+    {
+      id: "sat",
+      tabLabel: "Sat",
+      tabDate: "1/16",
+      title: "Whales & Medano Beach",
+      dateLabel: "Saturday, January 16",
+      intro: "A morning on the water, an afternoon on the sand, and steak with the game on.",
+      stops: [
+        {
+          time: "~7:25 AM",
+          title: "Car to the Marina",
+          desc: "A car takes us over to the Cabo San Lucas Marina, on the Sea of Cortez side of the peninsula — a different world from the quiet Pacific side we've been on."
+        },
+        {
+          time: "8:00–10:45 AM",
+          title: "Whale Watching Tour",
+          desc: "A biologist-led Zodiac tour with Cabo Expeditions or Whale Watch Cabo. January is peak season for humpback and gray whales migrating through these waters, and the small inflatable boats get closer to the action than the big tour boats.",
+          image: "https://picsum.photos/seed/whale-watching-cabo/700/420",
+          fallback: "whale-watching-cabo"
+        },
+        {
+          time: "~11:00 AM–12:30 PM",
+          title: "Marina & Downtown Cabo",
+          desc: "A walk through the marina and downtown — shops, galleries, and the classic view of the boats lined up against the water.",
+          image: PB.marina,
+          fallback: "cabo-marina-downtown"
+        },
+        {
+          time: "~12:30–2:00 PM",
+          title: "Lunch & Beach Time",
+          desc: "Lunch at Mango Deck — Cabo's classic high-energy beach club right on Medano Beach, with music, drinks, and chairs in the sand. Taboo or Corazón are nearby if we'd rather keep it calmer.",
+          image: PB.medano,
+          fallback: "medano-beach-cabo"
+        },
+        {
+          time: "Whenever",
+          title: "Head Back & Freshen Up",
+          desc: "Loose the rest of the afternoon — head back to Pacifica whenever we're ready."
+        },
+        {
+          time: "4:00–5:00 PM",
+          title: "Tequila & Mezcal Tasting",
+          desc: "A guided tasting flight at Refresca Bar, Quivira — a rundown of the difference between tequila and mezcal and a chance to try several styles side by side.",
+          meta: "500 MXN/person · all-inclusive",
+          image: PB.refresca,
+          fallback: "tequila-mezcal-tasting-bar"
+        },
+        {
+          time: "Evening",
+          title: "Dinner: Quivira Steakhouse",
+          desc: "A proper steakhouse overlooking the golf course and ocean — the one meal this trip with a surcharge, but a nice excuse to dress up a little.",
+          image: PB.quiviraSteakhouse,
+          fallback: "golf-course-steakhouse",
+          tag: "Surcharge"
+        },
+        {
+          time: "Until 2:00 AM",
+          title: "Nightcap: The After",
+          desc: "Quivira's sports bar — ten TVs, satellite sports, open late on Saturdays. NFL Wildcard Weekend games will be on, so this is the spot if we want to catch any of the action.",
+          image: PB.theAfter,
+          fallback: "sports-bar-tvs"
+        }
+      ]
+    },
+
+    {
+      id: "sun",
+      tabLabel: "Sun",
+      tabDate: "1/17",
+      title: "Choice Day",
+      dateLabel: "Sunday, January 17",
+      intro: "One decision covers the whole morning — brunch and relax, or something more active.",
+      stops: [
+        {
+          type: "decision",
+          id: "sun-activity",
+          time: "Morning",
+          title: "The Day's Plan",
+          prompt: "Genuinely open — brunch and relax, golf, cook, or unwind at the spa.",
+          default: null,
+          options: [
+            {
+              id: "brunch",
+              name: "Sunday International Brunch",
+              blurb: "A big spread at Siempre with live music, 7:30 AM–1:30 PM.",
+              detail: "The lowest-key option — no driving anywhere, just a long, easy morning with a great view.",
+              meta: "Included",
+              image: PB.siempre,
+              fallback: "resort-sunday-brunch"
+            },
+            {
+              id: "diamante",
+              name: "Golf: Diamante Dunes",
+              blurb: "Mexico's #1-ranked course, ~15 minutes away.",
+              detail: "A links-style course built into coastal sand dunes — very different terrain from Quivira's cliffs. Regularly ranked the best course in the country.",
+              meta: "~15 min away",
+              image: PB.diamante,
+              fallback: "dunes-golf-course-cabo"
+            },
+            {
+              id: "cabo-del-sol",
+              name: "Golf: Cabo del Sol",
+              blurb: "Ocean Course, Jack Nicklaus design, ~20 minutes away.",
+              detail: "Another Nicklaus design, on the Sea of Cortez side this time — a different coastline and a different feel from Friday's round at Quivira.",
+              meta: "~20 min away",
+              image: PB.caboDelSol,
+              fallback: "ocean-course-golf-cabo"
+            },
+            {
+              id: "cooking-class",
+              name: "Cooking Class with Chef Ari",
+              blurb: "Private, hands-on class at her home overlooking the Pacific.",
+              detail: "A small, personal class rather than a big group activity — we'd cook a full Mexican menu together in El Tezal, with the ocean as the backdrop.",
+              meta: "~15–20 min away",
+              image: PB.cookingClass,
+              fallback: "private-cooking-class",
+              link: { label: "Watch a preview ↗", url: "https://www.youtube.com/shorts/kCyM-tV_cyo" }
+            },
+            {
+              id: "spa",
+              name: "Armonia Spa",
+              blurb: "On property, à la carte treatments.",
+              detail: "No driving anywhere. We can apply any spa credit from the reservation toward treatments.",
+              meta: "On property · à la carte",
+              image: PB.spa,
+              fallback: "luxury-spa-treatment-room"
+            }
+          ]
+        },
+        {
+          time: "Afternoon",
+          title: "Pool & Beach at Pacifica",
+          desc: "Back to the adults-only side of the resort — should stay quieter than the main pool.",
+          image: PB.poolBeach,
+          fallback: "adults-only-resort-pool"
+        },
+        {
+          time: "Evening",
+          title: "Dinner: Sunset Monalisa",
+          desc: "Off property, about 25–30 minutes away — a cliffside restaurant famous for its sunset views over the arch. Smart casual, and worth booking the ocean terrace specifically.",
+          image: PB.sunsetMonalisa,
+          fallback: "cliffside-sunset-restaurant",
+          tag: "Off property"
+        }
+      ]
+    },
+
+    {
+      id: "mon",
+      tabLabel: "Mon",
+      tabDate: "1/18",
+      title: "Departure",
+      dateLabel: "Monday, January 18",
+      intro: "One last morning at Pacifica before heading home.",
+      stops: [
+        {
+          time: "Morning",
+          title: "Breakfast & Pack Up",
+          desc: "One last look at the ocean before we go."
+        },
+        {
+          time: "~6:15 AM (estimate)",
+          title: "Private Transfer Pickup",
+          desc: "With an international itinerary and checked golf clubs, plan to be at SJD around 3 hours before our 10:25 AM departure. Between the ~45-minute drive from Pacifica and extra time for oversized golf-bag check-in, a pickup around 6:15 AM gives a comfortable buffer — worth confirming the exact time with the resort concierge or transfer company closer to the trip."
+        },
+        {
+          time: "10:25 AM–9:14 PM",
+          title: "Flight Home",
+          desc: "DL9016 SJD → MEX, then DL624 MEX → JFK. One stop, 8h49m total — home in time for a late dinner."
+        }
+      ]
+    }
+  ]
+};
+
+/* ======================================================================
+   App logic — rendering, localStorage persistence, lightbox, swipe
+   ====================================================================== */
+
+const STORAGE_KEY = "cabo-trip-selections";
+
+function loadSelections(){
+  try{
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  }catch(e){
+    return {};
+  }
+}
+
+function saveSelection(decisionId, optionId){
+  const selections = loadSelections();
+  selections[decisionId] = optionId;
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(selections));
+  }catch(e){ /* localStorage unavailable — selection just won't persist */ }
+}
+
+function applyDefaults(){
+  const selections = loadSelections();
+  let changed = false;
+  TRIP_DATA.days.forEach(day => {
+    day.stops.forEach(stop => {
+      if (stop.type === "decision" && stop.default && !(stop.id in selections)){
+        selections[stop.id] = stop.default;
+        changed = true;
+      }
+    });
+  });
+  if (changed){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(selections)); }catch(e){}
+  }
+}
+
+function findOption(decisionStop, optionId){
+  return decisionStop.options.find(o => o.id === optionId) || null;
+}
+
+// Builds an <img> tag that falls back to a stock photo if the real URL
+// ever fails to load (broken link, hotlink-blocked, etc). onerror is
+// cleared after firing once so a failing fallback can't loop forever.
+function mediaImg(src, alt, fallbackSeed, className, extra){
+  const fallback = "https://picsum.photos/seed/" + fallbackSeed + "/700/450";
+  return '<img class="' + (className || "") + '" src="' + src + '" alt="' + alt + '" loading="lazy" ' +
+    (extra || "") +
+    ' onerror="this.onerror=null;this.src=\'' + fallback + '\';">';
+}
+
+function openLightbox(src, caption){
+  const lb = document.getElementById("lightbox");
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox-caption").textContent = caption || "";
+  lb.classList.add("open");
+}
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("open");
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+
+function renderCountdown(){
+  const target = new Date("2027-01-14T00:00:00");
+  const returnDate = new Date("2027-01-18T23:59:59");
+  const now = new Date();
+  const el = document.getElementById("countdown-pill");
+  const msPerDay = 1000 * 60 * 60 * 24;
+  if (now < target){
+    const days = Math.ceil((target - now) / msPerDay);
+    el.innerHTML = '<span class="num">' + days + '</span><span class="cap">' + (days === 1 ? "Day Out" : "Days Out") + '</span>';
+  } else if (now >= target && now <= returnDate){
+    el.innerHTML = '<span class="plain">We\'re in Cabo right now</span>';
+  } else {
+    el.innerHTML = '<span class="plain">What a trip — until next time</span>';
+  }
+}
+
+function renderWeather(){
+  const grid = document.getElementById("weather-grid");
+  grid.innerHTML = TRIP_DATA.weather.map(w =>
+    '<div class="weather-tile"><div class="icon">' + w.icon + '</div>' +
+    '<div class="value">' + w.value + '</div>' +
+    '<div class="label">' + w.label + '</div></div>'
+  ).join("");
+}
+
+function renderStay(){
+  document.getElementById("stay-intro").textContent = TRIP_DATA.stayIntro;
+
+  document.getElementById("stay-facts").innerHTML = TRIP_DATA.stayFacts.map(f =>
+    '<li><span class="dot"></span><span><b>' + f.label + ':</b> ' + f.text + '</span></li>'
+  ).join("");
+
+  document.getElementById("stay-gallery").innerHTML = TRIP_DATA.stayGallery.map(g => {
+    const imgHtml = mediaImg(g.image, g.caption, g.fallback, "",
+      'onclick="openLightbox(\'' + g.image + '\',\'' + g.caption.replace(/'/g, "&#39;") + '\')"');
+    return '<figure>' + imgHtml + '<figcaption>' + g.caption + '</figcaption></figure>';
+  }).join("");
+}
+
+function renderVenues(){
+  const grid = document.getElementById("venue-grid");
+  grid.innerHTML = TRIP_DATA.venues.map(v => {
+    const imgHtml = mediaImg(v.image, v.name, v.fallback, "",
+      'onclick="openLightbox(\'' + v.image + '\',\'' + v.name.replace(/'/g, "&#39;") + '\')"');
+    const tags = v.tags.map(t => '<span class="venue-tag">' + t + '</span>').join("");
+    return '<div class="venue-card">' + imgHtml +
+      '<div class="venue-card-body"><div class="venue-tags">' + tags + '</div>' +
+      '<div class="venue-name">' + v.name + '</div>' +
+      '<div class="venue-text">' + v.text + '</div></div></div>';
+  }).join("");
+}
+
+function renderOrientation(){
+  const list = document.getElementById("legend-list");
+  list.innerHTML = TRIP_DATA.orientation.map(o =>
+    '<li><span class="dot"></span><span><b>' + o.name + '</b> — ' + o.note + '</span></li>'
+  ).join("");
+}
+
+function renderDayNav(){
+  const nav = document.getElementById("day-nav");
+  nav.innerHTML = "";
+  TRIP_DATA.days.forEach((day, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "day-tab" + (idx === 0 ? " active" : "");
+    btn.dataset.dayId = day.id;
+    btn.innerHTML = day.tabLabel + '<span class="sub">' + day.tabDate + "</span>";
+    btn.addEventListener("click", () => activateDay(day.id));
+    nav.appendChild(btn);
+  });
+}
+
+function activateDay(dayId){
+  document.querySelectorAll(".day-tab").forEach(el => {
+    el.classList.toggle("active", el.dataset.dayId === dayId);
+  });
+  document.querySelectorAll(".day-panel").forEach(el => {
+    el.classList.toggle("active", el.id === "panel-" + dayId);
+  });
+}
+
+function activeDayIndex(){
+  const activeTab = document.querySelector(".day-tab.active");
+  if (!activeTab) return 0;
+  return TRIP_DATA.days.findIndex(d => d.id === activeTab.dataset.dayId);
+}
+
+function stopElement(stop){
+  const el = document.createElement("div");
+  el.className = "stop" + (stop.type === "decision" ? " decision" : "");
+
+  if (stop.type === "decision"){
+    el.innerHTML = renderDecisionStop(stop);
+  } else {
+    let mediaHtml = "";
+    if (stop.video){
+      mediaHtml = '<video class="stop-media" src="' + stop.video + '" controls muted playsinline preload="metadata"></video>';
+    } else if (stop.image){
+      mediaHtml = mediaImg(stop.image, stop.title, stop.fallback, "stop-media",
+        'onclick="openLightbox(\'' + stop.image + '\',\'' + stop.title.replace(/'/g, "&#39;") + '\')"');
+    }
+    const badges = [];
+    if (stop.meta) badges.push('<span class="stop-tag">' + stop.meta + '</span>');
+    if (stop.tag) badges.push('<span class="stop-tag' + (stop.tag === "Surcharge" ? " surcharge" : "") + '">' + stop.tag + '</span>');
+
+    el.innerHTML =
+      '<div class="stop-time">' + stop.time + '</div>' +
+      '<div class="stop-title">' + stop.title + '</div>' +
+      mediaHtml +
+      '<div class="stop-desc">' + stop.desc + '</div>' +
+      (badges.length ? '<div class="stop-badges">' + badges.join("") + '</div>' : '');
+  }
+
+  return el;
+}
+
+function renderDecisionStop(stop){
+  const selections = loadSelections();
+  const pickedId = selections[stop.id];
+  const picked = pickedId ? findOption(stop, pickedId) : null;
+
+  let html = '<div class="stop-time">' + stop.time + '</div>';
+  html += '<div class="stop-title">' + stop.title +
+    (picked ? ' — <span class="picked">' + picked.name + '</span>' : '') +
+    '</div>';
+  html += '<div class="decision-prompt">' + stop.prompt + '</div>';
+  html += '<div class="option-scroll" data-decision-id="' + stop.id + '">';
+
+  stop.options.forEach(opt => {
+    const isSelected = pickedId === opt.id;
+    const isRecommended = stop.default === opt.id && !pickedId;
+    const isRecommendedAndPicked = stop.default === opt.id && isSelected;
+    html += '<button class="option-card' + (isSelected ? ' selected' : '') + '" data-option-id="' + opt.id + '" data-decision-id="' + stop.id + '">';
+    html += '<div class="option-card-img-wrap">';
+    if (isRecommended || isRecommendedAndPicked){
+      html += '<div class="option-badge recommended">Recommended</div>';
+    }
+    html += '<div class="option-zoom" data-zoom-src="' + opt.image + '" data-zoom-caption="' + opt.name.replace(/'/g, "&#39;") + '">&#128269;</div>';
+    html += mediaImg(opt.image, opt.name, opt.fallback);
+    html += '</div>';
+    html += '<div class="option-body">';
+    html += '<div class="option-name">' + opt.name + '</div>';
+    html += '<div class="option-blurb">' + opt.blurb + '</div>';
+    if (opt.detail) html += '<div class="option-detail">' + opt.detail + '</div>';
+    if (opt.meta) html += '<div class="option-meta">' + opt.meta + '</div>';
+    if (opt.link) html += '<a class="option-link" href="' + opt.link.url + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">' + opt.link.label + '</a><br>';
+    html += '<div class="option-select-hint"></div>';
+    html += '</div></button>';
+  });
+
+  html += '</div>';
+  return html;
+}
+
+function decisionStopsForDay(day){
+  return day.stops.filter(s => s.type === "decision");
+}
+
+function renderPicksBar(day){
+  const decisions = decisionStopsForDay(day);
+  if (!decisions.length) return "";
+  const selections = loadSelections();
+  const chips = decisions.map(d => {
+    const pickedId = selections[d.id];
+    const picked = pickedId ? findOption(d, pickedId) : null;
+    if (picked){
+      return '<span class="pick-chip"><span class="dot"></span>' + d.title + ': ' + picked.name + '</span>';
+    }
+    return '<span class="pick-chip unset">' + d.title + ' — not picked yet</span>';
+  }).join("");
+  return '<div class="picks-bar">' + chips + '</div>';
+}
+
+function renderDay(day){
+  const panel = document.createElement("section");
+  panel.className = "day-panel";
+  panel.id = "panel-" + day.id;
+
+  panel.innerHTML =
+    '<h2 class="day-title"><span class="day-date">' + day.dateLabel + '</span>' + day.title + '</h2>' +
+    '<p class="day-intro">' + day.intro + '</p>' +
+    renderPicksBar(day);
+
+  const timeline = document.createElement("div");
+  timeline.className = "timeline";
+  day.stops.forEach(stop => timeline.appendChild(stopElement(stop)));
+  panel.appendChild(timeline);
+
+  return panel;
+}
+
+function renderAllDays(){
+  const container = document.getElementById("day-panels");
+  const previouslyActive = document.querySelector(".day-tab.active");
+  const activeId = previouslyActive ? previouslyActive.dataset.dayId : TRIP_DATA.days[0].id;
+
+  container.innerHTML = "";
+  TRIP_DATA.days.forEach(day => {
+    const panel = renderDay(day);
+    if (day.id === activeId) panel.classList.add("active");
+    container.appendChild(panel);
+  });
+  attachOptionListeners();
+  attachZoomListeners();
+}
+
+function attachOptionListeners(){
+  document.querySelectorAll(".option-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      // let the zoom icon and preview link handle their own clicks
+      if (e.target.closest(".option-zoom") || e.target.closest(".option-link")) return;
+      const decisionId = card.dataset.decisionId;
+      const optionId = card.dataset.optionId;
+      saveSelection(decisionId, optionId);
+      renderAllDays();
+    });
+  });
+}
+
+function attachZoomListeners(){
+  document.querySelectorAll(".option-zoom").forEach(z => {
+    z.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openLightbox(z.dataset.zoomSrc, z.dataset.zoomCaption);
+    });
+  });
+}
+
+// Swipe between days on touch devices
+function setupSwipe(){
+  const container = document.getElementById("day-panels");
+  let startX = null, startY = null;
+
+  container.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+
+  container.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    startX = null;
+    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy)) return; // not a horizontal swipe
+    const idx = activeDayIndex();
+    if (dx < 0 && idx < TRIP_DATA.days.length - 1){
+      activateDay(TRIP_DATA.days[idx + 1].id);
+    } else if (dx > 0 && idx > 0){
+      activateDay(TRIP_DATA.days[idx - 1].id);
+    }
+  }, { passive: true });
+}
+
+function init(){
+  applyDefaults();
+  renderCountdown();
+  renderWeather();
+  renderStay();
+  renderVenues();
+  renderOrientation();
+  renderDayNav();
+  renderAllDays();
+  setupSwipe();
+}
+
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
