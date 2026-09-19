@@ -842,15 +842,15 @@ const PB = {
   cookingClass: "https://www.kuaprivatechefloscabos.com/wp-content/uploads/2023/12/Chen-cooking-class1.jpg",
   poolBeach: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/1b/9c/e3/caption.jpg?w=1400&h=-1&s=1",
   sunsetMonalisa: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/5f/4a/e8/sm05.jpg?w=1400&h=-1&s=1",
-  towersVipLounge: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/8b/42/32/the-towers-at-pueblo.jpg?w=1000&h=-1&s=1",
-  poolView: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/59/75/19/caption.jpg?w=1400&h=-1&s=1",
-  whaleLounge: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/2a/d2/caption.jpg?w=1100&h=-1&s=1",
-  beachView: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/1b/9c/e3/caption.jpg?w=1400&h=-1&s=1",
-  beachSunset: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/18/b8/48/caption.jpg?w=1400&h=-1&s=1",
   // Photos we saved locally
   towersLounge: "assets/img/towers-lounge.webp",
   butlerService: "assets/img/butler-service.webp",
   areaMap: "assets/img/cabo-area-map.webp",
+  towersRoomBed: "assets/img/towers-room-bed.jpg",
+  towersBalcony: "assets/img/towers-balcony.jpg",
+  quiviraComfortStation: "assets/img/quivira-comfort-station.jpg",
+  whaleWatchingLounge: "assets/img/whale-watching-lounge.jpg",
+  whaleWatchingArch: "assets/img/whale-watching-arch.webp",
   quiviraVideo: "assets/video/quivira-golf.mp4"
 };
 
@@ -906,12 +906,10 @@ const TRIP_DATA = {
     { label: "Dates", text: "Check-in Thursday 1/14, check-out Monday 1/18." }
   ],
   stayGallery: [
+    { image: PB.towersRoomBed, fallback: "hotel-king-bed-room", caption: "Towers Deluxe Ocean View — the room" },
+    { image: PB.towersBalcony, fallback: "hotel-balcony-seating", caption: "Our balcony, looking out over the pool" },
     { image: PB.towersLounge, fallback: "hotel-vip-lounge", caption: "Exclusive Towers lounge" },
-    { image: PB.butlerService, fallback: "resort-butler-service", caption: "24-hour butler service" },
-    { image: PB.towersVipLounge, fallback: "towers-lounge-view", caption: "The Towers lounge & sundeck" },
-    { image: PB.poolView, fallback: "resort-pool-view", caption: "Pool at Pacifica" },
-    { image: PB.beachView, fallback: "resort-beach-view", caption: "The beach at Pacifica" },
-    { image: PB.beachSunset, fallback: "resort-beach-sunset", caption: "Sunset on the beach" }
+    { image: PB.butlerService, fallback: "resort-butler-service", caption: "24-hour butler service" }
   ],
 
   // Every restaurant/bar we might visit, for the "at a glance" directory.
@@ -982,7 +980,7 @@ const TRIP_DATA = {
           time: "~5:30 PM",
           title: "Happy Hour: Whale Watching VIP Lounge",
           desc: "A private oceanfront lounge built for scanning the horizon during whale season — the resort's own perch for watching migrating whales, drink in hand, as the sun starts to drop.",
-          image: PB.whaleLounge,
+          image: PB.whaleWatchingLounge,
           fallback: "oceanfront-viewing-lounge"
         },
         {
@@ -1078,7 +1076,9 @@ const TRIP_DATA = {
         {
           time: "~12:30 PM",
           title: "Off the Course",
-          desc: "About a 4.5 hour round, so we should be wrapping up right around lunchtime."
+          desc: "About a 4.5 hour round, so we should be wrapping up right around lunchtime. Quivira's cliffside comfort stations along the way are worth a slow-down moment even if we're not stopping — sunset-colored views straight down the coast.",
+          image: PB.quiviraComfortStation,
+          fallback: "cliffside-golf-rest-stop"
         },
         {
           time: "12:30–1:30 PM",
@@ -1169,7 +1169,7 @@ const TRIP_DATA = {
           time: "8:00–10:45 AM",
           title: "Whale Watching Tour",
           desc: "A biologist-led Zodiac tour with Cabo Expeditions or Whale Watch Cabo. January is peak season for humpback and gray whales migrating through these waters, and the small inflatable boats get closer to the action than the big tour boats.",
-          image: "assets/img/whale-watching-arch.webp",
+          image: PB.whaleWatchingArch,
           fallback: "whale-watching-cabo"
         },
         {
