@@ -979,13 +979,11 @@ const TRIP_DATA = {
           fallback: "cabo-resort-grounds"
         },
         {
-          type: "decision",
-          id: "thu-happy-hour",
           time: "~5:30 PM",
-          title: "Happy Hour",
-          prompt: "Where should we start the evening?",
-          default: null,
-          options: PACIFICA_BARS
+          title: "Happy Hour: Whale Watching VIP Lounge",
+          desc: "A private oceanfront lounge built for scanning the horizon during whale season — the resort's own perch for watching migrating whales, drink in hand, as the sun starts to drop.",
+          image: PB.whaleLounge,
+          fallback: "oceanfront-viewing-lounge"
         },
         {
           type: "decision",
@@ -1003,6 +1001,15 @@ const TRIP_DATA = {
               meta: "900 MXN/person · all-inclusive",
               image: PB.chefOnFire,
               fallback: "chef-on-fire-live-cooking"
+            },
+            {
+              id: "peninsula-thu",
+              name: "Peninsula",
+              blurb: "Sushi fine dining, right on the Pacifica point.",
+              detail: "The resort's upscale sushi restaurant, with an elevated ocean-view setting — a quieter, sit-down alternative to Chef on Fire.",
+              meta: "On property",
+              image: PB.peninsula,
+              fallback: "fine-dining-sushi-restaurant-thu"
             },
             {
               id: "siempre-thu",
@@ -1162,7 +1169,7 @@ const TRIP_DATA = {
           time: "8:00–10:45 AM",
           title: "Whale Watching Tour",
           desc: "A biologist-led Zodiac tour with Cabo Expeditions or Whale Watch Cabo. January is peak season for humpback and gray whales migrating through these waters, and the small inflatable boats get closer to the action than the big tour boats.",
-          image: "https://elegantmexico-staging.s3.us-east-2.amazonaws.com/2021/10/caboexpeditions-zodiac-01-1.jpg",
+          image: "https://image-tc.galaxy.tf/wijpeg-2la9ia5t4r5j99np06cen0rm1/marine-safari-whale-watching-tour.jpg",
           fallback: "whale-watching-cabo"
         },
         {
