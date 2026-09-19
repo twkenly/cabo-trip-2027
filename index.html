@@ -1372,11 +1372,23 @@ function findOption(decisionStop, optionId){
 // Builds an <img> tag that falls back to a stock photo if the real URL
 // ever fails to load (broken link, hotlink-blocked, etc). onerror is
 // cleared after firing once so a failing fallback can't loop forever.
+// The fallback is a plain neutral placeholder rather than a random stock
+// photo — an unrelated (but real-looking) photo silently taking a broken
+// link's place reads as a bug, not a placeholder. `fallbackSeed` is kept
+// on each data entry for future use but no longer drives the fallback.
+const PLACEHOLDER_IMG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450">' +
+  '<rect width="700" height="450" fill="#EFE4D2"/>' +
+  '<g fill="none" stroke="#2C7C89" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">' +
+  '<rect x="255" y="175" width="190" height="130" rx="14"/>' +
+  '<circle cx="350" cy="240" r="34"/>' +
+  '<path d="M303 175 L317 152 L383 152 L397 175"/>' +
+  '</g></svg>'
+);
 function mediaImg(src, alt, fallbackSeed, className, extra){
-  const fallback = "https://picsum.photos/seed/" + fallbackSeed + "/700/450";
   return '<img class="' + (className || "") + '" src="' + src + '" alt="' + alt + '" loading="lazy" ' +
     (extra || "") +
-    ' onerror="this.onerror=null;this.src=\'' + fallback + '\';">';
+    ' onerror="this.onerror=null;this.src=\'' + PLACEHOLDER_IMG + '\';">';
 }
 
 function openLightbox(src, caption){
