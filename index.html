@@ -878,8 +878,8 @@ const PACIFICA_BARS = [
   {
     id: "peninsula-bar",
     name: "Peninsula Bar",
-    blurb: "Pacifica's signature sunset spot, right at the point.",
-    detail: "Open-air seating over the water with an unobstructed ocean view — the natural pick for a sunset cocktail, with live music some evenings.",
+    blurb: "Pacifica's day-into-evening beach bar and lounge, right at the point.",
+    detail: "Tapas and DJ tunes outside by day, cocktails and live music inside as the sun goes down.",
     image: PB.peninsulaBar,
     fallback: "oceanfront-point-bar"
   },
@@ -894,7 +894,7 @@ const PACIFICA_BARS = [
   {
     id: "partidos",
     name: "Partidos",
-    blurb: "A lively sports-and-games bar in the resort complex.",
+    blurb: "The resort's sports bar, next to the main lobby.",
     detail: "Screens for the game and bar bites — a more casual scene than Peninsula Bar.",
     image: PB.partidos,
     fallback: "resort-sports-bar"
@@ -932,17 +932,17 @@ const TRIP_DATA = {
 
   // Every restaurant/bar we might visit, for the "at a glance" directory.
   venues: [
-    { name: "Peninsula", tags: ["Restaurant", "Pacifica"], image: PB.peninsula, fallback: "fine-dining-sushi", text: "Upscale sushi fine dining right on the Pacifica point — an elevated, ocean-view night out." },
-    { name: "Siempre", tags: ["Restaurant", "Pacifica"], image: PB.siempre, fallback: "mediterranean-ocean-view-restaurant", text: "Mediterranean cooking in a circular, glass-walled dining room over the ocean. Also hosts the Sunday brunch." },
-    { name: "Pescados", tags: ["Restaurant", "Pacifica"], image: PB.pescados, fallback: "resort-sushi-restaurant", text: "Pacifica's casual sushi and seafood spot — simple, fresh, and easy." },
-    { name: "Aire / Aquabar", tags: ["Bar", "Pacifica"], image: PB.aireAquabar, fallback: "swim-up-pool-bar", text: "Swim-up pool bar — order a drink without ever getting out of the water." },
-    { name: "Peninsula Bar", tags: ["Bar", "Pacifica"], image: PB.peninsulaBar, fallback: "oceanfront-point-bar", text: "Pacifica's signature sunset bar at the point, with live music some evenings." },
-    { name: "Partidos", tags: ["Bar"], image: PB.partidos, fallback: "resort-sports-bar", text: "A lively sports-and-games bar — screens, bar bites, casual energy." },
-    { name: "Quivira Steakhouse", tags: ["Restaurant", "Quivira"], image: PB.quiviraSteakhouse, fallback: "golf-course-steakhouse", text: "A proper steakhouse overlooking the golf course and ocean. One surcharge meal worth dressing up for." },
-    { name: "Quivira Clubhouse & Market", tags: ["Restaurant", "Quivira"], image: PB.quiviraClubhouse, fallback: "golf-clubhouse", text: "Coffee, breakfast, and lunch spot for golf days, with sweeping coastline views." },
-    { name: "Refresca Tequila Bar", tags: ["Bar", "Pacifica"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with tasting flights for going beyond the margarita." },
-    { name: "The After", tags: ["Bar", "Quivira"], image: PB.theAfter, fallback: "sports-bar-tvs", text: "Quivira's sports bar — ten TVs, satellite sports, open late on Saturdays." },
-    { name: "La Frida", tags: ["Restaurant", "Sunset Beach"], image: PB.laFrida, fallback: "sister-resort-restaurant", text: "The signature restaurant at Sunset Beach, Pacifica's sister property a short shuttle up the coast." }
+    { name: "Peninsula", tags: ["Restaurant", "Pacifica"], image: PB.peninsula, fallback: "baja-seafood-restaurant", text: "Pacifica's adults-only dinner restaurant — Baja regional seafood like San Carlos shrimp and Puerto Nuevo-style lobster, with ocean views from the terrace. Resort-elegant dress code, 6-10 PM." },
+    { name: "Siempre", tags: ["Restaurant", "Pacifica"], image: PB.siempre, fallback: "international-ocean-view-restaurant", text: "International cuisine with distinctive Mexican flavors, in a circular, glass-walled dining room over the ocean. Also hosts the Sunday brunch." },
+    { name: "Pescados", tags: ["Restaurant", "Pacifica"], image: PB.pescados, fallback: "resort-sushi-restaurant", text: "Pacifica's casually elegant sushi spot — sashimi, maki, and nigiri made with fresh-caught seafood." },
+    { name: "Aire / Aquabar", tags: ["Bar", "Pacifica"], image: PB.aireAquabar, fallback: "swim-up-pool-bar", text: "Swim-up pool bar and regional bites — order a drink or a healthy snack without ever getting out of the water." },
+    { name: "Peninsula Bar", tags: ["Bar", "Pacifica"], image: PB.peninsulaBar, fallback: "oceanfront-point-bar", text: "Pacifica's day-into-evening beach bar and lounge, right at the point — tapas and DJ tunes outside by day, cocktails and live music inside as the sun goes down." },
+    { name: "Partidos", tags: ["Bar"], image: PB.partidos, fallback: "resort-sports-bar", text: "The resort's sports bar, next to the main lobby — screens, bar bites, casual energy." },
+    { name: "Quivira Steakhouse", tags: ["Restaurant", "Quivira"], image: PB.quiviraSteakhouse, fallback: "golf-course-steakhouse", text: "A proper steakhouse at Quivira, with indoor and outdoor seating overlooking the golf course and ocean. One surcharge meal worth dressing up for." },
+    { name: "Quivira Clubhouse & Market", tags: ["Restaurant", "Quivira"], image: PB.quiviraClubhouse, fallback: "golf-clubhouse", text: "Coffee and pastries at The Market, tuna sliders and fish tacos at the Clubhouse — the go-to coffee and lunch stop for golf days, with sweeping coastline views." },
+    { name: "Refresca Tequila Bar", tags: ["Bar", "Pacifica"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with an extensive agave-spirits selection and tasting flights for going beyond the margarita." },
+    { name: "The After", tags: ["Bar", "Quivira"], image: PB.theAfter, fallback: "sports-bar-tvs", text: "Quivira's sports bar — ten TVs, satellite sports, and classic American pub fare with a Mexican twist. Open late on Saturdays." },
+    { name: "La Frida", tags: ["Restaurant", "Sunset Beach"], image: PB.laFrida, fallback: "sister-resort-restaurant", text: "Sunset Beach's AAA Four Diamond signature restaurant, a 5-minute shuttle away — a distinctive take on Mexican cuisine, still all-inclusive." }
   ],
 
   orientation: [
@@ -1023,7 +1023,7 @@ const TRIP_DATA = {
         {
           time: "9:00–11:00 PM",
           title: "Nightcap: Peninsula Bar",
-          desc: "Pacifica's signature sunset spot, right at the point — open-air seating over the water with an unobstructed ocean view and live music some evenings.",
+          desc: "Pacifica's day-into-evening beach bar and lounge, right at the point — cocktails and live music inside as the sun goes down.",
           image: PB.peninsulaBar,
           fallback: "oceanfront-point-bar"
         }
@@ -1093,10 +1093,10 @@ const TRIP_DATA = {
         {
           time: "Evening",
           title: "Dinner: Peninsula",
-          desc: "Sushi fine dining, right on the Pacifica point — a step up from Pescados, with an elevated ocean-view setting for a nicer night out.",
+          desc: "Pacifica's adults-only dinner restaurant, right on the point — Baja regional seafood like local shrimp and Puerto Nuevo-style lobster, with ocean views from the terrace. Resort-elegant dress code.",
           meta: "On property",
           image: PB.peninsula,
-          fallback: "fine-dining-sushi-restaurant"
+          fallback: "baja-seafood-restaurant"
         },
         {
           time: "Nightcap",
@@ -1159,14 +1159,14 @@ const TRIP_DATA = {
         {
           time: "6:00 PM",
           title: "Happy Hour: The After",
-          desc: "Over to Quivira's sports bar — ten TVs, satellite sports. NFL Wildcard Weekend games will be on, so this is the spot for kickoff before dinner.",
+          desc: "Over to Quivira's sports bar — ten TVs, satellite sports, classic American pub fare with a Mexican twist. NFL Wildcard Weekend games will be on, so this is the spot for kickoff before dinner.",
           image: PB.theAfter,
           fallback: "sports-bar-tvs"
         },
         {
           time: "7:00–7:30 PM",
           title: "Dinner: Quivira Steakhouse",
-          desc: "A proper steakhouse overlooking the golf course and ocean — the one meal this trip with a surcharge, but a nice excuse to dress up a little.",
+          desc: "A proper steakhouse with indoor and outdoor seating overlooking the golf course and ocean — the one meal this trip with a surcharge, but a nice excuse to dress up a little.",
           image: PB.quiviraSteakhouse,
           fallback: "golf-course-steakhouse",
           tag: "Surcharge"
@@ -1306,10 +1306,28 @@ const PLACEHOLDER_IMG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent
 // never hit this path (no lazy delay), which is why only the cards you
 // had to scroll to reach were affected. Loading these eagerly sidesteps
 // the bug entirely.
+// Escapes text for use inside a plain double-quoted HTML attribute (not a
+// JS string literal in an inline handler — see the note on lightboxAttrs).
+function escAttr(s){
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+
 function mediaImg(src, alt, fallbackSeed, className, extra, eager){
-  return '<img class="' + (className || "") + '" src="' + src + '" alt="' + alt + '" loading="' + (eager ? "eager" : "lazy") + '" ' +
+  return '<img class="' + (className || "") + '" src="' + src + '" alt="' + escAttr(alt) + '" loading="' + (eager ? "eager" : "lazy") + '" ' +
     (extra || "") +
     ' onerror="this.onerror=null;this.src=\'' + PLACEHOLDER_IMG + '\';">';
+}
+
+// data-lightbox-* attributes read by the single delegated listener below,
+// rather than a string-built inline onclick — inline handlers here bit us
+// once already: the browser HTML-decodes entities in attribute values
+// before the JS parser sees them, so an escaped-as-&#39; apostrophe in a
+// description (e.g. "Pacifica's") turned back into a real quote and broke
+// that one card's handler with a syntax error, while unaffected cards kept
+// working — exactly the "some images don't expand" bug this replaces.
+function lightboxAttrs(src, title, desc){
+  return 'data-lightbox-src="' + src + '" data-lightbox-title="' + escAttr(title) + '"' +
+    (desc ? ' data-lightbox-desc="' + escAttr(desc) + '"' : "");
 }
 
 function openLightbox(src, title, desc){
@@ -1324,6 +1342,11 @@ function closeLightbox(){
   document.getElementById("lightbox").classList.remove("open");
 }
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-lightbox-src]");
+  if (!el) return;
+  openLightbox(el.dataset.lightboxSrc, el.dataset.lightboxTitle, el.dataset.lightboxDesc);
+});
 
 function renderCountdown(){
   const target = new Date("2027-01-14T00:00:00");
@@ -1358,8 +1381,7 @@ function renderStay(){
   ).join("");
 
   document.getElementById("stay-gallery").innerHTML = TRIP_DATA.stayGallery.map(g => {
-    const imgHtml = mediaImg(g.image, g.caption, g.fallback, "",
-      'onclick="openLightbox(\'' + g.image + '\',\'' + g.caption.replace(/'/g, "&#39;") + '\')"');
+    const imgHtml = mediaImg(g.image, g.caption, g.fallback, "", lightboxAttrs(g.image, g.caption));
     return '<figure>' + imgHtml + '<figcaption>' + g.caption + '</figcaption></figure>';
   }).join("");
 }
@@ -1367,8 +1389,7 @@ function renderStay(){
 function renderVenues(){
   const grid = document.getElementById("venue-grid");
   grid.innerHTML = TRIP_DATA.venues.map(v => {
-    const imgHtml = mediaImg(v.image, v.name, v.fallback, "",
-      'onclick="openLightbox(\'' + v.image + '\',\'' + v.name.replace(/'/g, "&#39;") + '\',\'' + v.text.replace(/'/g, "&#39;") + '\')"');
+    const imgHtml = mediaImg(v.image, v.name, v.fallback, "", lightboxAttrs(v.image, v.name, v.text));
     return '<div class="venue-card">' + imgHtml +
       '<div class="venue-card-body"><div class="venue-meta">' + v.tags.join(" · ") + '</div>' +
       '<div class="venue-name">' + v.name + '</div>' +
@@ -1452,7 +1473,7 @@ function stopElement(stop){
       mediaHtml = '<video class="stop-media autoplay-video" src="' + stop.video + '" autoplay loop muted playsinline webkit-playsinline preload="auto" controls></video>';
     } else if (stop.image){
       mediaHtml = mediaImg(stop.image, stop.title, stop.fallback, "stop-media",
-        'onclick="openLightbox(\'' + stop.image + '\',\'' + stop.title.replace(/'/g, "&#39;") + '\',\'' + stop.desc.replace(/'/g, "&#39;") + '\')"');
+        lightboxAttrs(stop.image, stop.title, stop.desc));
     }
     const badges = [];
     if (stop.meta) badges.push('<span class="stop-tag">' + stop.meta + '</span>');
@@ -1491,8 +1512,7 @@ function renderDecisionStop(stop){
       html += '<div class="option-badge recommended">Recommended</div>';
     }
     const optDesc = (opt.blurb || "") + (opt.detail ? " " + opt.detail : "");
-    html += '<div class="option-zoom" data-zoom-src="' + opt.image + '" data-zoom-title="' + opt.name.replace(/'/g, "&#39;") +
-      '" data-zoom-desc="' + optDesc.replace(/"/g, "&quot;") + '">&#128269;</div>';
+    html += '<div class="option-zoom" ' + lightboxAttrs(opt.image, opt.name, optDesc) + '>&#128269;</div>';
     html += mediaImg(opt.image, opt.name, opt.fallback, "", "", true);
     html += '</div>';
     html += '<div class="option-body">';
@@ -1553,7 +1573,6 @@ function renderAllDays(){
     container.appendChild(renderDay(day));
   });
   attachOptionListeners();
-  attachZoomListeners();
   // Day panels were just recreated, so the scroll-spy observer (which
   // holds references to the old, now-detached nodes) needs to re-attach,
   // and the freshly-recreated Quivira video needs its autoplay reinforced.
@@ -1570,15 +1589,6 @@ function attachOptionListeners(){
       const optionId = card.dataset.optionId;
       saveSelection(decisionId, optionId);
       renderAllDays();
-    });
-  });
-}
-
-function attachZoomListeners(){
-  document.querySelectorAll(".option-zoom").forEach(z => {
-    z.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openLightbox(z.dataset.zoomSrc, z.dataset.zoomTitle, z.dataset.zoomDesc);
     });
   });
 }
