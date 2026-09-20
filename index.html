@@ -823,7 +823,6 @@ const PB = {
   aireAquabar: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-pacifica-airerestaurantandaquabaraire-image-69445a321a859.jpg",
   pescados: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-dining-pescados-60d3a49939ae9-686d417653f69.jpg",
   quiviraSteakhouse: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-pacifica-quivirasteakhouse-image-69445a4c7a1ea.jpg",
-  spa: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-spa-pacifica-60d3a2e6ea67f.jpg",
   golfGroups: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pb-golf-groups-6255a94ad00d8.jpeg",
   quiviraClubhouse: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-beyondhospitality-quiviraclubhouse-image-69445158cf1c0.jpg",
   quiviraMarket: "https://symphony.cdn.tambourine.com/pueblo-bonito-resorts-redesign/media/pueblobonito-sunsetbeach-themarketatquivira-image-69445ad94a267.jpg",
@@ -837,9 +836,7 @@ const PB = {
   quiviraClubhouseLunch: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/23/d9/db/caption.jpg?w=1400&h=-1&s=1",
   marina: "https://thecabosun.com/wp-content/uploads/2025/10/Marina-cabo-san-lucas-1.jpg",
   medano: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/30/1d/4a/colorful-umbrellas-at.jpg?w=1200&h=-1&s=1",
-  diamante: "https://diamantecabosanlucas.com/wp-content/uploads/2022/10/Golf_Dunes_1-1.jpg",
-  caboDelSol: "https://golf-pass.brightspotcdn.com/b1/86/adf571e8b10aea731421319ccd41/93850.jpg",
-  cookingClass: "https://www.kuaprivatechefloscabos.com/wp-content/uploads/2023/12/Chen-cooking-class1.jpg",
+  solmarGolf: "https://images.contentstack.io/v3/assets/blt99dd26276e65134a/blt85a41ca054ff5f88/64f7335f9bf2613bae6ba05a/solmar-golf-links-pin.jpg?auto=webp&width=1200&height=627&fit=bounds&disable=upscale",
   poolBeach: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/1b/9c/e3/caption.jpg?w=1400&h=-1&s=1",
   sunsetMonalisa: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/5f/4a/e8/sm05.jpg?w=1400&h=-1&s=1",
   // Photos we saved locally
@@ -930,6 +927,7 @@ const TRIP_DATA = {
   orientation: [
     { name: "Pueblo Bonito Pacifica", note: "Home base — an adults-only bluff-top resort on the Pacific side of the peninsula." },
     { name: "Quivira Golf Club", note: "Right next door to Pacifica — the Jack Nicklaus course we're playing Friday morning." },
+    { name: "Solmar Golf Links", note: "A Greg Norman course further down the coast — where we're playing Sunday morning." },
     { name: "Pueblo Bonito Sunset Beach", note: "Pacifica's sister resort a few minutes up the coast, reachable by a quick shuttle — home to La Frida." },
     { name: "Cabo San Lucas Marina & Downtown", note: "Boats, shops, and restaurants on the Sea of Cortez side — where our whale-watching tour departs from." },
     { name: "El Arco (The Arch)", note: "Cabo's iconic rock arch, right where the Pacific meets the Sea of Cortez — we'll pass it by boat Saturday." },
@@ -1221,65 +1219,27 @@ const TRIP_DATA = {
       id: "sun",
       tabLabel: "Sun",
       tabDate: "1/17",
-      title: "Choice Day",
+      title: "Golf at Solmar",
       dateLabel: "Sunday, January 17",
-      intro: "One decision covers the whole morning — brunch and relax, or something more active.",
+      intro: "An early tee time further down the coast, then pool time and dinner off property.",
       stops: [
         {
-          type: "decision",
-          id: "sun-activity",
-          time: "Morning",
-          title: "The Day's Plan",
-          prompt: "Genuinely open — brunch and relax, golf, cook, or unwind at the spa.",
-          default: null,
-          options: [
-            {
-              id: "brunch",
-              name: "Sunday International Brunch",
-              blurb: "A big spread at Siempre with live music, 7:30 AM–1:30 PM.",
-              detail: "The lowest-key option — no driving anywhere, just a long, easy morning with a great view.",
-              meta: "Included",
-              image: PB.siempre,
-              fallback: "resort-sunday-brunch"
-            },
-            {
-              id: "diamante",
-              name: "Golf: Diamante Dunes",
-              blurb: "Mexico's #1-ranked course, ~15 minutes away.",
-              detail: "A links-style course built into coastal sand dunes — very different terrain from Quivira's cliffs. Regularly ranked the best course in the country.",
-              meta: "~15 min away",
-              image: PB.diamante,
-              fallback: "dunes-golf-course-cabo"
-            },
-            {
-              id: "cabo-del-sol",
-              name: "Golf: Cabo del Sol",
-              blurb: "Ocean Course, Jack Nicklaus design, ~20 minutes away.",
-              detail: "Another Nicklaus design, on the Sea of Cortez side this time — a different coastline and a different feel from Friday's round at Quivira.",
-              meta: "~20 min away",
-              image: PB.caboDelSol,
-              fallback: "ocean-course-golf-cabo"
-            },
-            {
-              id: "cooking-class",
-              name: "Cooking Class with Chef Ari",
-              blurb: "Private, hands-on class at her home overlooking the Pacific.",
-              detail: "A small, personal class rather than a big group activity — we'd cook a full Mexican menu together in El Tezal, with the ocean as the backdrop.",
-              meta: "~15–20 min away",
-              image: PB.cookingClass,
-              fallback: "private-cooking-class",
-              link: { label: "Watch a preview ↗", url: "https://www.youtube.com/shorts/kCyM-tV_cyo" }
-            },
-            {
-              id: "spa",
-              name: "Armonia Spa",
-              blurb: "On property, à la carte treatments.",
-              detail: "No driving anywhere. We can apply any spa credit from the reservation toward treatments.",
-              meta: "On property · à la carte",
-              image: PB.spa,
-              fallback: "luxury-spa-treatment-room"
-            }
-          ]
+          time: "~7:00 AM",
+          title: "Depart for Solmar Golf Links",
+          desc: "About a 20–25 minute drive down the coast — a different stretch of Pacific coastline from Quivira."
+        },
+        {
+          time: "7:52 AM",
+          title: "Tee Time — Solmar Golf Links",
+          desc: "Greg Norman's 2020 design, cut into windswept coastal dunes with ocean views from every hole — including an island-green par 3. Both playing 18 holes.",
+          meta: "Confirmed · Booking #VX4470153P",
+          image: PB.solmarGolf,
+          fallback: "solmar-golf-links-dunes-ocean"
+        },
+        {
+          time: "~12:30 PM",
+          title: "Off the Course",
+          desc: "About a 4.5 hour round, so we'll be back at Pacifica in time for a late lunch."
         },
         {
           time: "Afternoon",
