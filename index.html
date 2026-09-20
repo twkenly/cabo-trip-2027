@@ -686,29 +686,42 @@
   }
 
   /* ---------- Lightbox ---------- */
+  /* justify-content: flex-start (not center) so a long description can
+     scroll — centered flex content clips unreachably past the midpoint. */
   .lightbox{
     position: fixed;
     inset: 0;
     background: rgba(14,58,69,0.94);
     display: none;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     z-index: 200;
     padding: var(--s5);
     flex-direction: column;
+    overflow-y: auto;
   }
   .lightbox.open{ display: flex; }
   .lightbox img{
     max-width: 100%;
-    max-height: 78vh;
+    max-height: 58vh;
     border-radius: var(--r-inner);
   }
   .lightbox-caption{
     color: var(--ivory);
-    font-size: 13.5px;
-    margin-top: var(--s4);
-    text-align: center;
-    max-width: 60ch;
+    margin: var(--s4) 0;
+    text-align: left;
+    max-width: 68ch;
+  }
+  .lightbox-title{
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .lightbox-desc{
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ivory);
+    opacity: 0.9;
   }
   .lightbox-close{
     position: absolute;
@@ -742,7 +755,7 @@
   <div class="dates">January 14&ndash;18, 2027</div>
   <div class="countdown-pill" id="countdown-pill"></div>
   <div class="callout">
-    The hard part's done — flights booked, hotel booked, activities lined up. Now it's <b>your</b> turn: tap into each day below and pick the restaurants and activities that sound good to you. Everything you choose is saved right here on your phone.
+    Everything's booked — golf, whale watching, every dinner and nightcap. Tap into each day below for the full plan, and tap any photo to read the full details.
   </div>
 </div>
 
@@ -836,7 +849,6 @@ const PB = {
   quiviraClubhouseLunch: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/23/d9/db/caption.jpg?w=1400&h=-1&s=1",
   marina: "https://thecabosun.com/wp-content/uploads/2025/10/Marina-cabo-san-lucas-1.jpg",
   medano: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/30/1d/4a/colorful-umbrellas-at.jpg?w=1200&h=-1&s=1",
-  solmarGolf: "https://images.contentstack.io/v3/assets/blt99dd26276e65134a/blt85a41ca054ff5f88/64f7335f9bf2613bae6ba05a/solmar-golf-links-pin.jpg?auto=webp&width=1200&height=627&fit=bounds&disable=upscale",
   poolBeach: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/1b/9c/e3/caption.jpg?w=1400&h=-1&s=1",
   sunsetMonalisa: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/5f/4a/e8/sm05.jpg?w=1400&h=-1&s=1",
   // Photos we saved locally
@@ -848,7 +860,8 @@ const PB = {
   quiviraComfortStation: "assets/img/quivira-comfort-station.jpg",
   whaleWatchingLounge: "assets/img/whale-watching-lounge.jpg",
   whaleWatchingArch: "assets/img/whale-watching-arch.webp",
-  quiviraVideo: "assets/video/quivira-golf.mp4"
+  quiviraVideo: "assets/video/quivira-golf.mp4",
+  solmarVideo: "assets/video/solmar-golf.mp4"
 };
 
 // The three bars we keep coming back to at Pacifica/Quivira — reused for
@@ -865,7 +878,7 @@ const PACIFICA_BARS = [
   {
     id: "refresca",
     name: "Refresca Tequila Bar",
-    blurb: "A dedicated tequila & mezcal bar at Quivira.",
+    blurb: "A dedicated tequila & mezcal bar on property at Pacifica.",
     detail: "An extensive agave-spirits list and tasting flights — the same spot as Saturday's tasting, if we want to go back for more.",
     image: PB.refresca,
     fallback: "tequila-mezcal-bar"
@@ -919,7 +932,7 @@ const TRIP_DATA = {
     { name: "Partidos", tags: ["Bar"], image: PB.partidos, fallback: "resort-sports-bar", text: "A lively sports-and-games bar — screens, bar bites, casual energy." },
     { name: "Quivira Steakhouse", tags: ["Restaurant", "Quivira"], image: PB.quiviraSteakhouse, fallback: "golf-course-steakhouse", text: "A proper steakhouse overlooking the golf course and ocean. One surcharge meal worth dressing up for." },
     { name: "Quivira Clubhouse & Market", tags: ["Restaurant", "Quivira"], image: PB.quiviraClubhouse, fallback: "golf-clubhouse", text: "Coffee, breakfast, and lunch spot for golf days, with sweeping coastline views." },
-    { name: "Refresca Tequila Bar", tags: ["Bar", "Quivira"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with tasting flights for going beyond the margarita." },
+    { name: "Refresca Tequila Bar", tags: ["Bar", "Pacifica"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with tasting flights for going beyond the margarita." },
     { name: "The After", tags: ["Bar", "Quivira"], image: PB.theAfter, fallback: "sports-bar-tvs", text: "Quivira's sports bar — ten TVs, satellite sports, open late on Saturdays." },
     { name: "La Frida", tags: ["Restaurant", "Sunset Beach"], image: PB.laFrida, fallback: "sister-resort-restaurant", text: "The signature restaurant at Sunset Beach, Pacifica's sister property a short shuttle up the coast." }
   ],
@@ -982,59 +995,19 @@ const TRIP_DATA = {
           fallback: "oceanfront-viewing-lounge"
         },
         {
-          type: "decision",
-          id: "thu-dinner",
           time: "6:00–7:30 PM",
-          title: "Dinner",
-          prompt: "First night in Cabo — where should we eat?",
-          default: "chef-on-fire",
-          options: [
-            {
-              id: "chef-on-fire",
-              name: "Chef on Fire",
-              blurb: "A live-fire chef's table on the Peninsula Garden & Beach.",
-              detail: "A three-course dinner with the chefs cooking meats and seafood right in front of you over open flame. Wine is included, capped off with a signature flamed coffee — and in winter, you might catch whales breaching offshore during dinner.",
-              meta: "900 MXN/person · all-inclusive",
-              image: PB.chefOnFire,
-              fallback: "chef-on-fire-live-cooking"
-            },
-            {
-              id: "peninsula-thu",
-              name: "Peninsula",
-              blurb: "Sushi fine dining, right on the Pacifica point.",
-              detail: "The resort's upscale sushi restaurant, with an elevated ocean-view setting — a quieter, sit-down alternative to Chef on Fire.",
-              meta: "On property",
-              image: PB.peninsula,
-              fallback: "fine-dining-sushi-restaurant-thu"
-            },
-            {
-              id: "siempre-thu",
-              name: "Siempre",
-              blurb: "Mediterranean cooking in a circular, glass-walled dining room over the ocean.",
-              detail: "Calmer and more low-key than Chef on Fire — good if we'd rather sit down after a long travel day than stand around an action station.",
-              meta: "On property",
-              image: PB.siempre,
-              fallback: "mediterranean-ocean-view-restaurant"
-            },
-            {
-              id: "pescados-thu",
-              name: "Pescados",
-              blurb: "The resort's sushi and seafood spot.",
-              detail: "Fresh, simple seafood-forward menu — a lighter option if we're not up for a big meal after flying all day.",
-              meta: "On property",
-              image: PB.pescados,
-              fallback: "resort-sushi-restaurant"
-            }
-          ]
+          title: "Dinner: Chef on Fire",
+          desc: "A live-fire chef's table on the Peninsula Garden & Beach. A three-course dinner with the chefs cooking meats and seafood right in front of you over open flame. Wine is included, capped off with a signature flamed coffee — and in winter, you might catch whales breaching offshore during dinner.",
+          meta: "900 MXN/person · all-inclusive",
+          image: PB.chefOnFire,
+          fallback: "chef-on-fire-live-cooking"
         },
         {
-          type: "decision",
-          id: "thu-nightcap",
           time: "9:00–11:00 PM",
-          title: "Nightcap",
-          prompt: "Where should we end the night?",
-          default: null,
-          options: PACIFICA_BARS
+          title: "Nightcap: Peninsula Bar",
+          desc: "Pacifica's signature sunset spot, right at the point — open-air seating over the water with an unobstructed ocean view and live music some evenings.",
+          image: PB.peninsulaBar,
+          fallback: "oceanfront-point-bar"
         }
       ]
     },
@@ -1093,59 +1066,26 @@ const TRIP_DATA = {
           fallback: "swim-up-pool-bar"
         },
         {
-          type: "decision",
-          id: "fri-dinner",
-          time: "Evening",
-          title: "Dinner",
-          prompt: "Wide open tonight — pick whatever sounds good.",
-          default: null,
-          options: [
-            {
-              id: "peninsula-fri",
-              name: "Peninsula",
-              blurb: "Sushi fine dining, right on the Pacifica point.",
-              detail: "The resort's upscale sushi restaurant — a step up from Pescados, with an elevated ocean-view setting for a nicer night out.",
-              meta: "On property",
-              image: PB.peninsula,
-              fallback: "fine-dining-sushi-restaurant"
-            },
-            {
-              id: "siempre-fri",
-              name: "Siempre",
-              blurb: "Mediterranean, circular ocean-view room.",
-              detail: "Same spot as Thursday's alternate — worth considering again if we loved the vibe, or skip it if we already went Thursday.",
-              meta: "On property",
-              image: PB.siempre,
-              fallback: "mediterranean-ocean-view-restaurant-2"
-            },
-            {
-              id: "pescados-fri",
-              name: "Pescados",
-              blurb: "Sushi, on property.",
-              detail: "Casual and reliable — good option if we want something easy after a full golf day.",
-              meta: "On property",
-              image: PB.pescados,
-              fallback: "resort-sushi-restaurant-2"
-            },
-            {
-              id: "la-frida-fri",
-              name: "La Frida",
-              blurb: "Sunset Beach's signature restaurant, a 5-minute shuttle away — still all-inclusive.",
-              detail: "A change of scenery without leaving the all-inclusive plan. Worth it if we want to see a different part of the coastline this trip.",
-              meta: "5 min shuttle away",
-              image: PB.laFrida,
-              fallback: "sister-resort-restaurant"
-            }
-          ]
+          time: "~5:30 PM",
+          title: "Happy Hour: Whale Watching VIP Lounge",
+          desc: "Back to the Towers' private oceanfront lounge — the same perch as Thursday, for a drink as the sun starts to drop before dinner.",
+          image: PB.whaleWatchingLounge,
+          fallback: "oceanfront-viewing-lounge"
         },
         {
-          type: "decision",
-          id: "fri-nightcap",
+          time: "Evening",
+          title: "Dinner: Peninsula",
+          desc: "Sushi fine dining, right on the Pacifica point — a step up from Pescados, with an elevated ocean-view setting for a nicer night out.",
+          meta: "On property",
+          image: PB.peninsula,
+          fallback: "fine-dining-sushi-restaurant"
+        },
+        {
           time: "Nightcap",
-          title: "Nightcap",
-          prompt: "Where should we end the night?",
-          default: null,
-          options: PACIFICA_BARS
+          title: "Nightcap: Refresca Tequila Bar",
+          desc: "A dedicated tequila & mezcal bar on property at Pacifica — an extensive agave-spirits list and tasting flights, same spot as Saturday's tasting if we want to go back for more.",
+          image: PB.refresca,
+          fallback: "tequila-mezcal-bar"
         }
       ]
     },
@@ -1193,13 +1133,20 @@ const TRIP_DATA = {
         {
           time: "4:00–5:00 PM",
           title: "Tequila & Mezcal Tasting",
-          desc: "A guided tasting flight at Refresca Bar, Quivira — a rundown of the difference between tequila and mezcal and a chance to try several styles side by side.",
+          desc: "A guided tasting flight at Refresca Bar, on property at Pacifica — a rundown of the difference between tequila and mezcal and a chance to try several styles side by side.",
           meta: "500 MXN/person · all-inclusive",
           image: PB.refresca,
           fallback: "tequila-mezcal-tasting-bar"
         },
         {
-          time: "Evening",
+          time: "6:00 PM",
+          title: "Happy Hour: The After",
+          desc: "Over to Quivira's sports bar — ten TVs, satellite sports. NFL Wildcard Weekend games will be on, so this is the spot for kickoff before dinner.",
+          image: PB.theAfter,
+          fallback: "sports-bar-tvs"
+        },
+        {
+          time: "7:00–7:30 PM",
           title: "Dinner: Quivira Steakhouse",
           desc: "A proper steakhouse overlooking the golf course and ocean — the one meal this trip with a surcharge, but a nice excuse to dress up a little.",
           image: PB.quiviraSteakhouse,
@@ -1209,7 +1156,8 @@ const TRIP_DATA = {
         {
           time: "Until 2:00 AM",
           title: "Nightcap: The After",
-          desc: "Quivira's sports bar — ten TVs, satellite sports, open late on Saturdays. NFL Wildcard Weekend games will be on, so this is the spot if we want to catch any of the action.",
+          desc: "Back to Quivira's sports bar if the games are still going — optional, only if we're not ready to call it a night.",
+          meta: "Optional",
           image: PB.theAfter,
           fallback: "sports-bar-tvs"
         }
@@ -1234,7 +1182,7 @@ const TRIP_DATA = {
           title: "Tee Time — Solmar Golf Links",
           desc: "Greg Norman's 2020 design, cut into windswept coastal dunes with ocean views from every hole — including an island-green par 3. Both playing 18 holes.",
           meta: "Confirmed · Booking #VX4470153P",
-          image: PB.solmarGolf,
+          video: PB.solmarVideo,
           fallback: "solmar-golf-links-dunes-ocean"
         },
         {
@@ -1346,10 +1294,12 @@ function mediaImg(src, alt, fallbackSeed, className, extra, eager){
     ' onerror="this.onerror=null;this.src=\'' + PLACEHOLDER_IMG + '\';">';
 }
 
-function openLightbox(src, caption){
+function openLightbox(src, title, desc){
   const lb = document.getElementById("lightbox");
   document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox-caption").textContent = caption || "";
+  document.getElementById("lightbox-caption").innerHTML =
+    (title ? '<div class="lightbox-title">' + title + '</div>' : "") +
+    (desc ? '<div class="lightbox-desc">' + desc + '</div>' : "");
   lb.classList.add("open");
 }
 function closeLightbox(){
@@ -1400,7 +1350,7 @@ function renderVenues(){
   const grid = document.getElementById("venue-grid");
   grid.innerHTML = TRIP_DATA.venues.map(v => {
     const imgHtml = mediaImg(v.image, v.name, v.fallback, "",
-      'onclick="openLightbox(\'' + v.image + '\',\'' + v.name.replace(/'/g, "&#39;") + '\')"');
+      'onclick="openLightbox(\'' + v.image + '\',\'' + v.name.replace(/'/g, "&#39;") + '\',\'' + v.text.replace(/'/g, "&#39;") + '\')"');
     return '<div class="venue-card">' + imgHtml +
       '<div class="venue-card-body"><div class="venue-meta">' + v.tags.join(" · ") + '</div>' +
       '<div class="venue-name">' + v.name + '</div>' +
@@ -1476,7 +1426,7 @@ function stopElement(stop){
       mediaHtml = '<video class="stop-media autoplay-video" src="' + stop.video + '" autoplay loop muted playsinline webkit-playsinline preload="auto" controls></video>';
     } else if (stop.image){
       mediaHtml = mediaImg(stop.image, stop.title, stop.fallback, "stop-media",
-        'onclick="openLightbox(\'' + stop.image + '\',\'' + stop.title.replace(/'/g, "&#39;") + '\')"');
+        'onclick="openLightbox(\'' + stop.image + '\',\'' + stop.title.replace(/'/g, "&#39;") + '\',\'' + stop.desc.replace(/'/g, "&#39;") + '\')"');
     }
     const badges = [];
     if (stop.meta) badges.push('<span class="stop-tag">' + stop.meta + '</span>');
@@ -1514,7 +1464,9 @@ function renderDecisionStop(stop){
     if (isRecommended || isRecommendedAndPicked){
       html += '<div class="option-badge recommended">Recommended</div>';
     }
-    html += '<div class="option-zoom" data-zoom-src="' + opt.image + '" data-zoom-caption="' + opt.name.replace(/'/g, "&#39;") + '">&#128269;</div>';
+    const optDesc = (opt.blurb || "") + (opt.detail ? " " + opt.detail : "");
+    html += '<div class="option-zoom" data-zoom-src="' + opt.image + '" data-zoom-title="' + opt.name.replace(/'/g, "&#39;") +
+      '" data-zoom-desc="' + optDesc.replace(/"/g, "&quot;") + '">&#128269;</div>';
     html += mediaImg(opt.image, opt.name, opt.fallback, "", "", true);
     html += '</div>';
     html += '<div class="option-body">';
@@ -1600,7 +1552,7 @@ function attachZoomListeners(){
   document.querySelectorAll(".option-zoom").forEach(z => {
     z.addEventListener("click", (e) => {
       e.stopPropagation();
-      openLightbox(z.dataset.zoomSrc, z.dataset.zoomCaption);
+      openLightbox(z.dataset.zoomSrc, z.dataset.zoomTitle, z.dataset.zoomDesc);
     });
   });
 }
