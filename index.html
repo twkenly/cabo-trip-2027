@@ -800,6 +800,14 @@
 
 <main class="day-panels" id="day-panels"></main>
 
+<section class="section" id="transport-section">
+  <div class="section-eyebrow">Don't Forget</div>
+  <h2 class="section-title">Coordinate With the Hotel</h2>
+  <hr class="rule-gold">
+  <p class="section-intro">The private SJD airport transfer is already booked. These other rides still need to be arranged with the resort or a driver.</p>
+  <ul class="legend" id="transport-list"></ul>
+</section>
+
 <div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
   <img id="lightbox-img" src="" alt="">
@@ -946,6 +954,16 @@ const TRIP_DATA = {
     { name: "El Arco (The Arch)", note: "Cabo's iconic rock arch, right where the Pacific meets the Sea of Cortez — we'll pass it by boat Saturday." },
     { name: "Medano Beach", note: "The main swimmable beach in town, lined with beach clubs — lunch at Mango Deck Saturday afternoon." },
     { name: "San José del Cabo Airport (SJD)", note: "Where we fly in and out — roughly a 45-minute drive from Pacifica." }
+  ],
+
+  // Rides that still need to be arranged with the resort — separate from
+  // the private SJD airport transfer, which is already booked.
+  transportToCoordinate: [
+    { name: "Fri — Pacifica → Quivira, ~7:20 AM", note: "For the golf tee time. Quivira is Pueblo Bonito's own course, so this may already be an automatic resort shuttle — confirm with the concierge rather than assume it'll show up." },
+    { name: "Sat — Pacifica → Marina, ~7:25 AM", note: "For the whale watching tour, plus the return trip after lunch and beach time at Medano." },
+    { name: "Sat — Pacifica → Quivira, ~5:45 PM", note: "For the 6 PM happy hour at The After, through Quivira Steakhouse dinner and the optional nightcap, then back — a separate trip from Friday's golf shuttle." },
+    { name: "Sun — Pacifica → Solmar Golf Links, ~7:00 AM", note: "For the tee time, and the return around 12:30 PM. Solmar isn't a Pueblo Bonito property, so this one isn't an automatic resort shuttle." },
+    { name: "Sun — Pacifica → Sunset Monalisa, evening", note: "About 25–30 minutes each way for dinner, plus the return trip. Worth locking in early given the drive length and the occasion." }
   ],
 
   days: [
@@ -1365,6 +1383,13 @@ function renderOrientation(){
   ).join("");
 }
 
+function renderTransport(){
+  const list = document.getElementById("transport-list");
+  list.innerHTML = TRIP_DATA.transportToCoordinate.map(t =>
+    '<li><span class="dot"></span><span><b>' + t.name + '</b> — ' + t.note + '</span></li>'
+  ).join("");
+}
+
 // One sticky nav for the whole page: the Towers/Dining/Map sections plus
 // every day. Clicking a tab smooth-scrolls to that section; scroll-spy
 // (below) keeps the matching tab highlighted as you scroll past it.
@@ -1372,7 +1397,8 @@ const NAV_ITEMS = [
   { id: "stay-section", label: "Towers", sub: "Stay" },
   { id: "dining-section", label: "Dining", sub: "Eat" },
   { id: "orientation-section", label: "Map", sub: "Explore" }
-].concat(TRIP_DATA.days.map(day => ({ id: "panel-" + day.id, label: day.tabLabel, sub: day.tabDate })));
+].concat(TRIP_DATA.days.map(day => ({ id: "panel-" + day.id, label: day.tabLabel, sub: day.tabDate })))
+ .concat([{ id: "transport-section", label: "Transport", sub: "Coordinate" }]);
 
 function renderSiteNav(){
   const nav = document.getElementById("site-nav");
@@ -1581,6 +1607,7 @@ function init(){
   renderStay();
   renderVenues();
   renderOrientation();
+  renderTransport();
   renderSiteNav();
   renderAllDays();
 }
