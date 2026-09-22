@@ -85,6 +85,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 62% center;
     display: block;
   }
 
@@ -547,9 +548,14 @@
     border-radius: var(--r-pill);
   }
   .stop-tag.surcharge{ color: var(--clay-deep); background: var(--clay-tint); }
+  .stop-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s4);
+    margin-top: var(--s2);
+  }
   .stop-link{
     display: inline-block;
-    margin-top: var(--s2);
     font-family: var(--font-ui);
     font-size: 13px;
     font-weight: 500;
@@ -804,7 +810,7 @@
   <div class="section-eyebrow">Don't Forget</div>
   <h2 class="section-title">Coordinate With the Hotel</h2>
   <hr class="rule-gold">
-  <p class="section-intro">The private SJD airport transfer is already booked. These other rides still need to be arranged with the resort or a driver.</p>
+  <p class="section-intro">The private SJD airport transfer is already booked. For everything else: Uber works fine around Cabo, but can't get past Pacifica's security gate to pick us up (it can still drop us back off) — so each outbound leg below needs a real ride arranged, while most return trips can likely just be an Uber.</p>
   <ul class="legend" id="transport-list"></ul>
 </section>
 
@@ -932,17 +938,17 @@ const TRIP_DATA = {
 
   // Every restaurant/bar we might visit, for the "at a glance" directory.
   venues: [
-    { name: "Peninsula", tags: ["Restaurant", "Pacifica"], image: PB.peninsula, fallback: "baja-seafood-restaurant", text: "Pacifica's adults-only dinner restaurant — Baja regional seafood like San Carlos shrimp and Puerto Nuevo-style lobster, with ocean views from the terrace. Resort-elegant dress code, 6-10 PM." },
-    { name: "Siempre", tags: ["Restaurant", "Pacifica"], image: PB.siempre, fallback: "international-ocean-view-restaurant", text: "International cuisine with distinctive Mexican flavors, in a circular, glass-walled dining room over the ocean. Also hosts the Sunday brunch." },
-    { name: "Pescados", tags: ["Restaurant", "Pacifica"], image: PB.pescados, fallback: "resort-sushi-restaurant", text: "Pacifica's casually elegant sushi spot — sashimi, maki, and nigiri made with fresh-caught seafood." },
-    { name: "Aire / Aquabar", tags: ["Bar", "Pacifica"], image: PB.aireAquabar, fallback: "swim-up-pool-bar", text: "Swim-up pool bar and regional bites — order a drink or a healthy snack without ever getting out of the water." },
-    { name: "Peninsula Bar", tags: ["Bar", "Pacifica"], image: PB.peninsulaBar, fallback: "oceanfront-point-bar", text: "Pacifica's day-into-evening beach bar and lounge, right at the point — tapas and DJ tunes outside by day, cocktails and live music inside as the sun goes down." },
-    { name: "Partidos", tags: ["Bar"], image: PB.partidos, fallback: "resort-sports-bar", text: "The resort's sports bar, next to the main lobby — screens, bar bites, casual energy." },
-    { name: "Quivira Steakhouse", tags: ["Restaurant", "Quivira"], image: PB.quiviraSteakhouse, fallback: "golf-course-steakhouse", text: "A proper steakhouse at Quivira, with indoor and outdoor seating overlooking the golf course and ocean. One surcharge meal worth dressing up for." },
-    { name: "Quivira Clubhouse & Market", tags: ["Restaurant", "Quivira"], image: PB.quiviraClubhouse, fallback: "golf-clubhouse", text: "Coffee and pastries at The Market, tuna sliders and fish tacos at the Clubhouse — the go-to coffee and lunch stop for golf days, with sweeping coastline views." },
-    { name: "Refresca Tequila Bar", tags: ["Bar", "Pacifica"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with an extensive agave-spirits selection and tasting flights for going beyond the margarita." },
-    { name: "The After", tags: ["Bar", "Quivira"], image: PB.theAfter, fallback: "sports-bar-tvs", text: "Quivira's sports bar — ten TVs, satellite sports, and classic American pub fare with a Mexican twist. Open late on Saturdays." },
-    { name: "La Frida", tags: ["Restaurant", "Sunset Beach"], image: PB.laFrida, fallback: "sister-resort-restaurant", text: "Sunset Beach's AAA Four Diamond signature restaurant, a 5-minute shuttle away — a distinctive take on Mexican cuisine, still all-inclusive." }
+    { name: "Peninsula", tags: ["Restaurant", "Pacifica"], image: PB.peninsula, fallback: "baja-seafood-restaurant", text: "Pacifica's adults-only dinner restaurant — Baja regional seafood like San Carlos shrimp and Puerto Nuevo-style lobster, with ocean views from the terrace. Resort-elegant dress code, 6-10 PM.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "Siempre", tags: ["Restaurant", "Pacifica"], image: PB.siempre, fallback: "international-ocean-view-restaurant", text: "International cuisine with distinctive Mexican flavors, in a circular, glass-walled dining room over the ocean. Also hosts the Sunday brunch.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "Pescados", tags: ["Restaurant", "Pacifica"], image: PB.pescados, fallback: "resort-sushi-restaurant", text: "Pacifica's casually elegant sushi spot — sashimi, maki, and nigiri made with fresh-caught seafood.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "Aire / Aquabar", tags: ["Bar", "Pacifica"], image: PB.aireAquabar, fallback: "swim-up-pool-bar", text: "Swim-up pool bar and regional bites — order a drink or a healthy snack without ever getting out of the water.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "Peninsula Bar", tags: ["Bar", "Pacifica"], image: PB.peninsulaBar, fallback: "oceanfront-point-bar", text: "Pacifica's day-into-evening beach bar and lounge, right at the point — tapas and DJ tunes outside by day, cocktails and live music inside as the sun goes down.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "Partidos", tags: ["Bar"], image: PB.partidos, fallback: "resort-sports-bar", text: "The resort's sports bar, next to the main lobby — screens, bar bites, casual energy.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "Quivira Steakhouse", tags: ["Restaurant", "Quivira"], image: PB.quiviraSteakhouse, fallback: "golf-course-steakhouse", text: "A proper steakhouse at Quivira, with indoor and outdoor seating overlooking the golf course and ocean. One surcharge meal worth dressing up for.", link: { label: "Menu & info ↗", url: "https://www.quiviraloscabos.com/golf/quivira-steakhouse-club-house" } },
+    { name: "Quivira Clubhouse & Market", tags: ["Restaurant", "Quivira"], image: PB.quiviraClubhouse, fallback: "golf-clubhouse", text: "Coffee and pastries at The Market, tuna sliders and fish tacos at the Clubhouse — the go-to coffee and lunch stop for golf days, with sweeping coastline views.", link: { label: "Menu & info ↗", url: "https://www.quiviraloscabos.com/golf/quivira-steakhouse-club-house" } },
+    { name: "Refresca Tequila Bar", tags: ["Bar", "Pacifica"], image: PB.refresca, fallback: "tequila-mezcal-bar", text: "A dedicated tequila & mezcal bar with an extensive agave-spirits selection and tasting flights for going beyond the margarita.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" } },
+    { name: "The After", tags: ["Bar", "Quivira"], image: PB.theAfter, fallback: "sports-bar-tvs", text: "Quivira's sports bar — ten TVs, satellite sports, and classic American pub fare with a Mexican twist. Open late on Saturdays.", link: { label: "Menu & info ↗", url: "https://www.quiviraloscabos.com/blog/the-after-at-quivira-cabos-top-sports-bar" } },
+    { name: "La Frida", tags: ["Restaurant", "Sunset Beach"], image: PB.laFrida, fallback: "sister-resort-restaurant", text: "Sunset Beach's AAA Four Diamond signature restaurant, a 5-minute shuttle away — a distinctive take on Mexican cuisine, still all-inclusive.", link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/sunset-beach/pueblo-bonito-sunset-beach-restaurants" } }
   ],
 
   orientation: [
@@ -958,12 +964,16 @@ const TRIP_DATA = {
 
   // Rides that still need to be arranged with the resort — separate from
   // the private SJD airport transfer, which is already booked.
+  // Uber operates fine around Cabo, but can't get past most resorts'
+  // security gates to do a pickup (it can still drop a returning guest off)
+  // — so the outbound leg from Pacifica needs a real ride arranged, while
+  // the return trip can likely just be an Uber from wherever we end up.
   transportToCoordinate: [
     { name: "Fri — Pacifica → Quivira, ~7:20 AM", note: "For the golf tee time. Quivira is Pueblo Bonito's own course, so this may already be an automatic resort shuttle — confirm with the concierge rather than assume it'll show up." },
-    { name: "Sat — Pacifica → Marina, ~7:25 AM", note: "For the whale watching tour, plus the return trip after lunch and beach time at Medano." },
-    { name: "Sat — Pacifica → Quivira, ~5:45 PM", note: "For the 6 PM happy hour at The After, through Quivira Steakhouse dinner and the optional nightcap, then back — a separate trip from Friday's golf shuttle." },
-    { name: "Sun — Pacifica → Solmar Golf Links, ~7:00 AM", note: "For the tee time, and the return around 12:30 PM. Solmar isn't a Pueblo Bonito property, so this one isn't an automatic resort shuttle." },
-    { name: "Sun — Pacifica → Sunset Monalisa, evening", note: "About 25–30 minutes each way for dinner, plus the return trip. Worth locking in early given the drive length and the occasion." }
+    { name: "Sat — Pacifica → Marina, ~7:25 AM", note: "For the whale watching tour. The return trip after lunch and beach time at Medano can likely just be an Uber — it's a public area, and Uber can drop off back at Pacifica even though it can't pick up there." },
+    { name: "Sat — Pacifica → Quivira, ~5:45 PM", note: "For the 6 PM happy hour at The After, through Quivira Steakhouse dinner and the optional nightcap — a separate trip from Friday's golf shuttle. The late return can be an Uber back to Pacifica." },
+    { name: "Sun — Pacifica → Solmar Golf Links, ~7:00 AM", note: "For the tee time. Solmar isn't a Pueblo Bonito property, so this isn't an automatic resort shuttle — worth confirming whether Uber can even reach the clubhouse gate, since golf resorts sometimes restrict pickups the same way Pacifica does." },
+    { name: "Sun — Pacifica → Sunset Monalisa, evening", note: "About 25–30 minutes each way for dinner. The return should be fine as an Uber — it's a standalone restaurant, not a gated resort — but the outbound leg still needs arranging since Uber won't pick up inside Pacifica's gates." }
   ],
 
   days: [
@@ -971,6 +981,7 @@ const TRIP_DATA = {
       id: "thu",
       tabLabel: "Thu",
       tabDate: "1/14",
+      dateISO: "2027-01-14",
       title: "Arrival",
       dateLabel: "Thursday, January 14",
       intro: "Wheels up at 6 AM, wheels down in Cabo by 2 — then our first taste of Pacifica.",
@@ -978,12 +989,14 @@ const TRIP_DATA = {
         {
           time: "6:00 AM",
           title: "Flight: LGA → ATL",
-          desc: "DL550, the first leg of the day."
+          desc: "DL550, landing in Atlanta around 8:20 AM — roughly a 3-hour layover before the connection to Cabo.",
+          cal: { start: "2027-01-14T06:00:00-05:00", end: "2027-01-14T08:20:00-05:00", location: "LaGuardia Airport (LGA)" }
         },
         {
           time: "11:20 AM",
           title: "Flight: ATL → SJD",
-          desc: "DL1945, touching down in Los Cabos around 2:00 PM."
+          desc: "DL1945, touching down in Los Cabos around 2:00 PM.",
+          cal: { start: "2027-01-14T11:20:00-05:00", end: "2027-01-14T14:00:00-07:00", location: "Hartsfield-Jackson Atlanta International Airport (ATL)" }
         },
         {
           time: "2:00 PM",
@@ -1018,14 +1031,16 @@ const TRIP_DATA = {
           desc: "A live-fire chef's table on the Peninsula Garden & Beach. A three-course dinner with the chefs cooking meats and seafood right in front of you over open flame. Wine is included, capped off with a signature flamed coffee — and in winter, you might catch whales breaching offshore during dinner.",
           meta: "900 MXN/person · all-inclusive",
           image: PB.chefOnFire,
-          fallback: "chef-on-fire-live-cooking"
+          fallback: "chef-on-fire-live-cooking",
+          link: { label: "Resort dining info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" }
         },
         {
           time: "9:00–11:00 PM",
           title: "Nightcap: Peninsula Bar",
           desc: "Pacifica's day-into-evening beach bar and lounge, right at the point — cocktails and live music inside as the sun goes down.",
           image: PB.peninsulaBar,
-          fallback: "oceanfront-point-bar"
+          fallback: "oceanfront-point-bar",
+          link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" }
         }
       ]
     },
@@ -1034,6 +1049,7 @@ const TRIP_DATA = {
       id: "fri",
       tabLabel: "Fri",
       tabDate: "1/15",
+      dateISO: "2027-01-15",
       title: "Golf at Quivira",
       dateLabel: "Friday, January 15",
       intro: "An early tee time at one of Cabo's most dramatic courses, then pool time and an open dinner choice.",
@@ -1060,7 +1076,9 @@ const TRIP_DATA = {
           title: "Tee Time — Quivira",
           desc: "Jack Nicklaus's Signature design carved into the cliffs above the Pacific — several holes play right along the edge of the bluff, with the ocean in view almost the entire round.",
           video: PB.quiviraVideo,
-          fallback: "quivira-golf-course-cliffside"
+          fallback: "quivira-golf-course-cliffside",
+          link: { label: "Course info ↗", url: "https://www.quiviraloscabos.com/golf" },
+          cal: { start: "2027-01-15T08:00:00-07:00", end: "2027-01-15T12:30:00-07:00", location: "Quivira Golf Club, Cabo San Lucas" }
         },
         {
           time: "~12:30 PM",
@@ -1096,14 +1114,16 @@ const TRIP_DATA = {
           desc: "Pacifica's adults-only dinner restaurant, right on the point — Baja regional seafood like local shrimp and Puerto Nuevo-style lobster, with ocean views from the terrace. Resort-elegant dress code.",
           meta: "On property",
           image: PB.peninsula,
-          fallback: "baja-seafood-restaurant"
+          fallback: "baja-seafood-restaurant",
+          link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" }
         },
         {
           time: "Nightcap",
           title: "Nightcap: Refresca Tequila Bar",
           desc: "A dedicated tequila & mezcal bar on property at Pacifica — an extensive agave-spirits list and tasting flights, same spot as Saturday's tasting if we want to go back for more.",
           image: PB.refresca,
-          fallback: "tequila-mezcal-bar"
+          fallback: "tequila-mezcal-bar",
+          link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" }
         }
       ]
     },
@@ -1112,6 +1132,7 @@ const TRIP_DATA = {
       id: "sat",
       tabLabel: "Sat",
       tabDate: "1/16",
+      dateISO: "2027-01-16",
       title: "Whales & Medano Beach",
       dateLabel: "Saturday, January 16",
       intro: "A morning on the water, an afternoon on the sand, and steak with the game on.",
@@ -1127,7 +1148,8 @@ const TRIP_DATA = {
           desc: "A biologist-led Zodiac Adventure tour. January is peak season for humpback and gray whales migrating through these waters, and the small inflatable boat gets closer to the action than the big tour boats. Meet at their office in Plaza Bonita, behind Starbucks.",
           meta: "Confirmed · Booking #LLBP-200926",
           image: PB.whaleWatchingArch,
-          fallback: "whale-watching-cabo"
+          fallback: "whale-watching-cabo",
+          link: { label: "Tour info ↗", url: "https://whalewatchcabo.com/" }
         },
         {
           time: "~11:00 AM–12:30 PM",
@@ -1154,14 +1176,16 @@ const TRIP_DATA = {
           desc: "A guided tasting flight at Refresca Bar, on property at Pacifica — a rundown of the difference between tequila and mezcal and a chance to try several styles side by side.",
           meta: "500 MXN/person · all-inclusive",
           image: PB.refresca,
-          fallback: "tequila-mezcal-tasting-bar"
+          fallback: "tequila-mezcal-tasting-bar",
+          link: { label: "Menu & info ↗", url: "https://www.pueblobonito.com/resorts/pacifica/pueblo-bonito-pacifica-restaurants" }
         },
         {
           time: "6:00 PM",
           title: "Happy Hour: The After",
           desc: "Over to Quivira's sports bar — ten TVs, satellite sports, classic American pub fare with a Mexican twist. NFL Wildcard Weekend games will be on, so this is the spot for kickoff before dinner.",
           image: PB.theAfter,
-          fallback: "sports-bar-tvs"
+          fallback: "sports-bar-tvs",
+          link: { label: "Menu & info ↗", url: "https://www.quiviraloscabos.com/blog/the-after-at-quivira-cabos-top-sports-bar" }
         },
         {
           time: "7:00–7:30 PM",
@@ -1169,7 +1193,8 @@ const TRIP_DATA = {
           desc: "A proper steakhouse with indoor and outdoor seating overlooking the golf course and ocean — the one meal this trip with a surcharge, but a nice excuse to dress up a little.",
           image: PB.quiviraSteakhouse,
           fallback: "golf-course-steakhouse",
-          tag: "Surcharge"
+          tag: "Surcharge",
+          link: { label: "Menu & info ↗", url: "https://www.quiviraloscabos.com/golf/quivira-steakhouse-club-house" }
         },
         {
           time: "Until 2:00 AM",
@@ -1177,7 +1202,8 @@ const TRIP_DATA = {
           desc: "Back to Quivira's sports bar if the games are still going — optional, only if we're not ready to call it a night.",
           meta: "Optional",
           image: PB.theAfter,
-          fallback: "sports-bar-tvs"
+          fallback: "sports-bar-tvs",
+          link: { label: "Menu & info ↗", url: "https://www.quiviraloscabos.com/blog/the-after-at-quivira-cabos-top-sports-bar" }
         }
       ]
     },
@@ -1186,6 +1212,7 @@ const TRIP_DATA = {
       id: "sun",
       tabLabel: "Sun",
       tabDate: "1/17",
+      dateISO: "2027-01-17",
       title: "Golf at Solmar",
       dateLabel: "Sunday, January 17",
       intro: "An early tee time further down the coast, then pool time and dinner off property.",
@@ -1201,7 +1228,9 @@ const TRIP_DATA = {
           desc: "Greg Norman's 2020 design, cut into windswept coastal dunes with ocean views from every hole — including an island-green par 3. Both playing 18 holes.",
           meta: "Confirmed · Booking #VX4470153P",
           video: PB.solmarVideo,
-          fallback: "solmar-golf-links-dunes-ocean"
+          fallback: "solmar-golf-links-dunes-ocean",
+          link: { label: "Course info ↗", url: "https://www.solmargolf.com/" },
+          cal: { start: "2027-01-17T07:52:00-07:00", end: "2027-01-17T12:30:00-07:00", location: "Solmar Golf Links, Cabo San Lucas" }
         },
         {
           time: "~12:30 PM",
@@ -1221,7 +1250,8 @@ const TRIP_DATA = {
           desc: "Off property, about 25–30 minutes away — a cliffside restaurant famous for its sunset views over the arch. Smart casual, and worth booking the ocean terrace specifically.",
           image: PB.sunsetMonalisa,
           fallback: "cliffside-sunset-restaurant",
-          tag: "Off property"
+          tag: "Off property",
+          link: { label: "Reservations ↗", url: "https://sunsetmonalisa.com/" }
         }
       ]
     },
@@ -1230,6 +1260,7 @@ const TRIP_DATA = {
       id: "mon",
       tabLabel: "Mon",
       tabDate: "1/18",
+      dateISO: "2027-01-18",
       title: "Departure",
       dateLabel: "Monday, January 18",
       intro: "One last morning at Pacifica before heading home.",
@@ -1245,9 +1276,16 @@ const TRIP_DATA = {
           desc: "With an international itinerary and checked golf clubs, plan to be at SJD around 3 hours before our 10:25 AM departure. Between the ~45-minute drive from Pacifica and extra time for oversized golf-bag check-in, a pickup around 6:15 AM gives a comfortable buffer — worth confirming the exact time with the resort concierge or transfer company closer to the trip."
         },
         {
-          time: "10:25 AM–9:14 PM",
-          title: "Flight Home",
-          desc: "DL9016 SJD → MEX, then DL624 MEX → JFK. One stop, 8h49m total — home in time for a late dinner."
+          time: "10:25 AM",
+          title: "Flight: SJD → MEX",
+          desc: "DL9016, landing in Mexico City around 1:40 PM — roughly a 1.5-2 hour layover before the connection to JFK, worth double-checking once boarding passes are in hand.",
+          cal: { start: "2027-01-18T10:25:00-07:00", end: "2027-01-18T13:40:00-06:00", location: "Los Cabos International Airport (SJD)" }
+        },
+        {
+          time: "~3:30 PM",
+          title: "Flight: MEX → JFK",
+          desc: "DL624, landing at JFK around 9:14 PM. One stop, 8h49m total from SJD — home in time for a late dinner.",
+          cal: { start: "2027-01-18T15:30:00-06:00", end: "2027-01-18T21:14:00-05:00", location: "Mexico City International Airport (MEX)" }
         }
       ]
     }
@@ -1330,6 +1368,61 @@ function lightboxAttrs(src, title, desc){
     (desc ? ' data-lightbox-desc="' + escAttr(desc) + '"' : "");
 }
 
+function pad2(n){ return String(n).padStart(2, "0"); }
+
+function toGcalUTC(date){
+  return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+}
+
+function gcalUrl(title, startDate, endDate, details, location){
+  const qs = new URLSearchParams({
+    action: "TEMPLATE",
+    text: title,
+    dates: toGcalUTC(startDate) + "/" + toGcalUTC(endDate),
+    details: details || "",
+    location: location || ""
+  });
+  return "https://calendar.google.com/calendar/render?" + qs.toString();
+}
+
+// Turns a stop's fuzzy time label ("~7:20 AM", "7:50-8:00 AM") into a
+// start/end pair on the given date, using Cabo's fixed UTC-7 (no DST in
+// January regardless of the zone's summer rules, so this is unambiguous).
+// Returns null for labels with no clock time ("Evening", "Whenever") or
+// that start with "Until" (an end boundary only, not a real start time).
+function parseStopTimeRange(dateISO, timeLabel){
+  if (/^until/i.test(timeLabel.trim())) return null;
+  const matches = [...timeLabel.matchAll(/(\d{1,2}):(\d{2})\s*(AM|PM)?/gi)];
+  if (!matches.length) return null;
+
+  const lastMeridiem = matches[matches.length - 1][3];
+  function toDate(h, m, meridiem){
+    h = parseInt(h, 10);
+    const mer = (meridiem || lastMeridiem || "").toUpperCase();
+    if (mer === "PM" && h !== 12) h += 12;
+    if (mer === "AM" && h === 12) h = 0;
+    return new Date(dateISO + "T" + pad2(h) + ":" + pad2(parseInt(m, 10)) + ":00-07:00");
+  }
+
+  const start = toDate(matches[0][1], matches[0][2], matches[0][3]);
+  const end = matches[1]
+    ? toDate(matches[1][1], matches[1][2], matches[1][3])
+    : new Date(start.getTime() + 60 * 60 * 1000);
+  return { start, end };
+}
+
+// A stop's own `cal` (precise, timezone-crossing — flights) takes
+// priority; otherwise falls back to auto-parsing its `time` label, which
+// covers every Cabo-local stop (tee times, tours, dinners) for free.
+function calLinkForStop(dateISO, stop){
+  const range = stop.cal
+    ? { start: new Date(stop.cal.start), end: new Date(stop.cal.end) }
+    : parseStopTimeRange(dateISO, stop.time);
+  if (!range) return null;
+  const location = (stop.cal && stop.cal.location) || "";
+  return gcalUrl(stop.title, range.start, range.end, stop.desc, location);
+}
+
 function openLightbox(src, title, desc){
   const lb = document.getElementById("lightbox");
   document.getElementById("lightbox-img").src = src;
@@ -1390,10 +1483,11 @@ function renderVenues(){
   const grid = document.getElementById("venue-grid");
   grid.innerHTML = TRIP_DATA.venues.map(v => {
     const imgHtml = mediaImg(v.image, v.name, v.fallback, "", lightboxAttrs(v.image, v.name, v.text));
+    const linkHtml = v.link ? '<div class="stop-links"><a class="stop-link" href="' + v.link.url + '" target="_blank" rel="noopener noreferrer">' + v.link.label + '</a></div>' : "";
     return '<div class="venue-card">' + imgHtml +
       '<div class="venue-card-body"><div class="venue-meta">' + v.tags.join(" · ") + '</div>' +
       '<div class="venue-name">' + v.name + '</div>' +
-      '<div class="venue-text">' + v.text + '</div></div></div>';
+      '<div class="venue-text">' + v.text + '</div>' + linkHtml + '</div></div>';
   }).join("");
 }
 
@@ -1461,7 +1555,7 @@ function setupScrollSpy(){
   targets.forEach(t => scrollSpyObserver.observe(t));
 }
 
-function stopElement(stop){
+function stopElement(stop, dateISO){
   const el = document.createElement("div");
   el.className = "stop" + (stop.type === "decision" ? " decision" : "");
 
@@ -1470,7 +1564,7 @@ function stopElement(stop){
   } else {
     let mediaHtml = "";
     if (stop.video){
-      mediaHtml = '<video class="stop-media autoplay-video" src="' + stop.video + '" autoplay loop muted playsinline webkit-playsinline preload="auto" controls></video>';
+      mediaHtml = '<video class="stop-media lazy-autoplay-video" src="' + stop.video + '" loop muted playsinline webkit-playsinline preload="metadata" controls></video>';
     } else if (stop.image){
       mediaHtml = mediaImg(stop.image, stop.title, stop.fallback, "stop-media",
         lightboxAttrs(stop.image, stop.title, stop.desc));
@@ -1479,12 +1573,18 @@ function stopElement(stop){
     if (stop.meta) badges.push('<span class="stop-tag">' + stop.meta + '</span>');
     if (stop.tag) badges.push('<span class="stop-tag' + (stop.tag === "Surcharge" ? " surcharge" : "") + '">' + stop.tag + '</span>');
 
+    const links = [];
+    if (stop.link) links.push('<a class="stop-link" href="' + stop.link.url + '" target="_blank" rel="noopener noreferrer">' + stop.link.label + '</a>');
+    const calUrl = calLinkForStop(dateISO, stop);
+    if (calUrl) links.push('<a class="stop-link" href="' + calUrl + '" target="_blank" rel="noopener noreferrer">+ Add to Calendar</a>');
+
     el.innerHTML =
       '<div class="stop-time">' + stop.time + '</div>' +
       '<div class="stop-title">' + stop.title + '</div>' +
       mediaHtml +
       '<div class="stop-desc">' + stop.desc + '</div>' +
-      (badges.length ? '<div class="stop-badges">' + badges.join("") + '</div>' : '');
+      (badges.length ? '<div class="stop-badges">' + badges.join("") + '</div>' : '') +
+      (links.length ? '<div class="stop-links">' + links.join("") + '</div>' : '');
   }
 
   return el;
@@ -1560,7 +1660,7 @@ function renderDay(day){
 
   const timeline = document.createElement("div");
   timeline.className = "timeline";
-  day.stops.forEach(stop => timeline.appendChild(stopElement(stop)));
+  day.stops.forEach(stop => timeline.appendChild(stopElement(stop, day.dateISO)));
   panel.appendChild(timeline);
 
   return panel;
@@ -1575,9 +1675,9 @@ function renderAllDays(){
   attachOptionListeners();
   // Day panels were just recreated, so the scroll-spy observer (which
   // holds references to the old, now-detached nodes) needs to re-attach,
-  // and the freshly-recreated Quivira video needs its autoplay reinforced.
+  // and the freshly-recreated golf videos need their lazy-autoplay watcher back.
   setupScrollSpy();
-  ensureVideosAutoplay();
+  setupLazyVideoAutoplay();
 }
 
 function attachOptionListeners(){
@@ -1593,22 +1693,27 @@ function attachOptionListeners(){
   });
 }
 
-// iOS Safari's autoplay attribute support is inconsistent, especially
-// right after a video element is inserted/re-inserted into the page (as
-// happens whenever a pick re-renders the day panels). Explicitly calling
-// .play() — after forcing .muted = true, which iOS requires even when the
-// HTML attribute is already present — is the standard reinforcement.
-// .catch() swallows the rejection when autoplay is genuinely blocked by
-// device settings (Low Power Mode, Safari's Auto-Play preference); the
-// video still has `controls`, so it's tappable either way.
-function ensureVideosAutoplay(){
-  document.querySelectorAll("video[autoplay]").forEach(video => {
-    video.muted = true;
-    const tryPlay = () => video.play().catch(() => {});
-    tryPlay();
-    video.addEventListener("loadedmetadata", tryPlay, { once: true });
-    video.addEventListener("canplay", tryPlay, { once: true });
-  });
+// Golf videos autoplay only once scrolled into view, not the instant the
+// page loads — otherwise a video is half over by the time someone actually
+// scrolls down to it. IntersectionObserver starts/pauses playback as each
+// one crosses the viewport; disconnecting and re-observing on every render
+// (day panels get recreated on a pick) mirrors setupScrollSpy() below.
+let videoAutoplayObserver = null;
+function setupLazyVideoAutoplay(){
+  if (videoAutoplayObserver) videoAutoplayObserver.disconnect();
+  videoAutoplayObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting){
+        video.muted = true;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll(".lazy-autoplay-video").forEach(video => videoAutoplayObserver.observe(video));
 }
 
 function init(){
