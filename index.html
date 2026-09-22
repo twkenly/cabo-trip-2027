@@ -186,6 +186,21 @@
     max-width: 62ch;
   }
 
+  /* A dark banner behind each section/day heading, to break up the long
+     scroll of otherwise same-toned ivory sections into distinct chapters. */
+  .section-header{
+    background: var(--pacific);
+    border-radius: var(--r-card);
+    padding: var(--s5);
+    margin-bottom: var(--s5);
+    box-shadow: var(--shadow);
+  }
+  .section-header .section-title,
+  .section-header .day-title{
+    color: var(--ivory);
+  }
+  .section-header .rule-gold:last-child{ margin-bottom: 0; }
+
   /* ---------- Weather ---------- */
   .weather-note{
     font-family: var(--font-mono);
@@ -768,35 +783,43 @@
 <nav class="site-nav" id="site-nav"></nav>
 
 <section class="section" id="weather-section">
-  <div class="section-eyebrow">What to Expect</div>
-  <h2 class="section-title">Weather in Mid-January</h2>
-  <hr class="rule-gold">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Expect</div>
+    <h2 class="section-title">Weather in Mid-January</h2>
+    <hr class="rule-gold">
+  </div>
   <p class="section-intro">Los Cabos is in its dry season this time of year — warm, sunny days and cool nights, with almost no rain.</p>
   <p class="weather-note">Typical/historical averages for mid-January, not a live forecast.</p>
   <div class="weather-grid" id="weather-grid"></div>
 </section>
 
 <section class="section" id="stay-section">
-  <div class="section-eyebrow">Where We're Staying</div>
-  <h2 class="section-title">The Towers at Pacifica</h2>
-  <hr class="rule-gold">
+  <div class="section-header">
+    <div class="section-eyebrow">Where We're Staying</div>
+    <h2 class="section-title">The Towers at Pacifica</h2>
+    <hr class="rule-gold">
+  </div>
   <p class="section-intro" id="stay-intro"></p>
   <ul class="stay-facts" id="stay-facts"></ul>
   <div class="gallery-grid" id="stay-gallery"></div>
 </section>
 
 <section class="section" id="dining-section">
-  <div class="section-eyebrow">At a Glance</div>
-  <h2 class="section-title">Restaurants &amp; Bars</h2>
-  <hr class="rule-gold">
+  <div class="section-header">
+    <div class="section-eyebrow">At a Glance</div>
+    <h2 class="section-title">Restaurants &amp; Bars</h2>
+    <hr class="rule-gold">
+  </div>
   <p class="section-intro">Everywhere we might eat or drink this trip, in one place — most are inside Pacifica or a quick trip to Quivira next door.</p>
   <div class="venue-grid" id="venue-grid"></div>
 </section>
 
 <section class="section" id="orientation-section">
-  <div class="section-eyebrow">Getting Our Bearings</div>
-  <h2 class="section-title">The Lay of the Land</h2>
-  <hr class="rule-gold">
+  <div class="section-header">
+    <div class="section-eyebrow">Getting Our Bearings</div>
+    <h2 class="section-title">The Lay of the Land</h2>
+    <hr class="rule-gold">
+  </div>
   <p class="section-intro">Everything for this trip sits along a short stretch of Pacific coastline just west of downtown Cabo San Lucas.</p>
   <div class="map-wrap">
     <img src="assets/img/cabo-area-map.webp" alt="Map of the Cabo San Lucas corridor showing Pueblo Bonito Pacifica, Quivira Golf Club, the Marina, and El Arco" loading="lazy" onclick="openLightbox('assets/img/cabo-area-map.webp','The Cabo corridor: Quivira Golf Club and Pueblo Bonito Pacifica sit side by side on the Pacific, a short drive from the Marina, El Arco, and downtown.')">
@@ -807,9 +830,11 @@
 <main class="day-panels" id="day-panels"></main>
 
 <section class="section" id="transport-section">
-  <div class="section-eyebrow">Don't Forget</div>
-  <h2 class="section-title">Coordinate With the Hotel</h2>
-  <hr class="rule-gold">
+  <div class="section-header">
+    <div class="section-eyebrow">Don't Forget</div>
+    <h2 class="section-title">Coordinate With the Hotel</h2>
+    <hr class="rule-gold">
+  </div>
   <p class="section-intro">The private SJD airport transfer is already booked. For everything else: Uber works fine around Cabo, but can't get past Pacifica's security gate to pick us up (it can still drop us back off) — so each outbound leg below needs a real ride arranged, while most return trips can likely just be an Uber.</p>
   <ul class="legend" id="transport-list"></ul>
 </section>
@@ -1654,7 +1679,7 @@ function renderDay(day){
   panel.id = "panel-" + day.id;
 
   panel.innerHTML =
-    '<h2 class="day-title"><span class="day-date">' + day.dateLabel + '</span>' + day.title + '</h2>' +
+    '<div class="section-header"><h2 class="day-title"><span class="day-date">' + day.dateLabel + '</span>' + day.title + '</h2></div>' +
     '<p class="day-intro">' + day.intro + '</p>' +
     renderPicksBar(day);
 
